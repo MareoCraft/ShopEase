@@ -560,3 +560,161 @@ footer {
     justify-content: flex-start;
     cursor: pointer;
 }
+
+
+/* =====================================
+   DASHBOARD DETAIL PANELS
+===================================== */
+
+.dashboard-details-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+    align-items: stretch;
+}
+
+.dashboard-list-card {
+    min-width: 0;
+    background: #ffffff;
+    border: 1px solid #edf0f5;
+    border-radius: 14px;
+    padding: 22px;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.02);
+}
+
+.dashboard-list-card .section-heading {
+    gap: 12px;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.dashboard-list-card .section-heading h2 {
+    font-size: 17px;
+    color: #202938;
+}
+
+.dashboard-list-card .section-heading p {
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.dashboard-list-card .section-heading a {
+    flex-shrink: 0;
+    white-space: nowrap;
+    font-weight: 600;
+}
+
+/* TABLE WRAPPER */
+
+.dashboard-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.dashboard-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.dashboard-table thead th {
+    padding: 12px 10px;
+    background: #f8fafc;
+    color: #7b8797;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    white-space: nowrap;
+    border-bottom: 1px solid #edf0f5;
+}
+
+.dashboard-table tbody td {
+    padding: 15px 10px;
+    color: #536071;
+    font-size: 12px;
+    border-bottom: 1px solid #f0f2f6;
+    vertical-align: middle;
+}
+
+.dashboard-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.dashboard-table tbody tr:hover {
+    background: #fafcff;
+}
+
+.dashboard-table td strong {
+    display: block;
+    color: #263244;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+/* PENDING AMOUNT */
+
+.dashboard-amount {
+    display: inline-block;
+    padding: 6px 9px;
+    background: #fff1f2;
+    color: #dc2626;
+    border-radius: 7px;
+    font-size: 12px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+/* PRODUCT SKU */
+
+.dashboard-sku {
+    display: block;
+    margin-top: 4px;
+    color: #94a3b8;
+    font-size: 10px;
+}
+
+/* LOW STOCK WARNING */
+
+.stock-warning {
+    display: inline-block;
+    padding: 6px 9px;
+    background: #fff7ed;
+    color: #ea580c;
+    border-radius: 7px;
+    font-size: 12px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+/* EMPTY STATE */
+
+.dashboard-empty {
+    padding: 30px 12px !important;
+    text-align: center;
+    color: #94a3b8 !important;
+    font-size: 12px !important;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 1100px) {
+    .dashboard-details-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 700px) {
+    .dashboard-list-card {
+        padding: 16px;
+    }
+
+    .dashboard-list-card .section-heading {
+        flex-wrap: wrap;
+    }
+
+    .dashboard-table {
+        min-width: 420px;
+    }
+}

@@ -99,7 +99,9 @@ body {
 }
 
 .section-heading {
-    margin-bottom: 21px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .section-heading h2 {
@@ -311,4 +313,178 @@ body {
     .summary-card h2 {
         font-size: 23px;
     }
+}
+
+
+/* =====================================
+   UDHAR SEARCH
+===================================== */
+
+.udhar-search {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    max-width: 550px;
+    margin: 20px 0;
+    padding: 12px 15px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    transition: all 0.2s ease;
+}
+
+.udhar-search:focus-within {
+    background: #ffffff;
+    border-color: #93c5fd;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.08);
+}
+
+.udhar-search > svg {
+    width: 19px;
+    height: 19px;
+    color: #64748b;
+    flex-shrink: 0;
+}
+
+.udhar-search input {
+    flex: 1;
+    min-width: 0;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: #1e293b;
+    font-size: 13px;
+}
+
+.udhar-search input::placeholder {
+    color: #94a3b8;
+}
+
+.udhar-search button {
+    border: none;
+    background: transparent;
+    color: #2563eb;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.udhar-search button:hover {
+    color: #1d4ed8;
+}
+
+/* =====================================
+   CUSTOMER INFORMATION
+===================================== */
+
+.udhar-customer-name {
+    display: block;
+    color: #1e293b;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.bill-count {
+    display: inline-flex;
+    align-items: center;
+    padding: 7px 12px;
+    background: #eff6ff;
+    color: #2563eb;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+/* =====================================
+   ICONS
+===================================== */
+
+.heading-icon {
+    width: 25px;
+    height: 25px;
+    vertical-align: middle;
+    margin-right: 7px;
+}
+
+.page-header h1 {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.back-btn,
+.collect-btn,
+.view-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+}
+
+.back-btn svg,
+.collect-btn svg,
+.view-btn svg {
+    width: 16px;
+    height: 16px;
+}
+
+.summary-icon {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 14px;
+    background: #eff6ff;
+    color: #2563eb;
+    border-radius: 11px;
+}
+
+.summary-icon svg {
+    width: 22px;
+    height: 22px;
+}
+
+.bills-icon {
+    background: #f3e8ff;
+    color: #9333ea;
+}
+
+.success-message,
+.error-message {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+}
+
+.success-message svg,
+.error-message svg {
+    width: 19px;
+    height: 19px;
+    flex-shrink: 0;
+}
+
+.empty-state > svg {
+    width: 32px;
+    height: 32px;
+    margin-bottom: 10px;
+    color: #16a34a;
+}
+
+/* =====================================
+   RESPONSIVE SEARCH
+===================================== */
+
+@media (max-width: 600px) {
+
+    .udhar-search {
+        max-width: 100%;
+    }
+
+    .udhar-search input {
+        font-size: 12px;
+    }
+
 }

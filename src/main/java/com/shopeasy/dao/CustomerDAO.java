@@ -27,13 +27,13 @@ public class CustomerDAO {
         }
     }
 
-    // GET ALL CUSTOMERS BY SHOP
+    // GET ALL CUSTOMERS BY SHOP WITH PENDING UDHAR
     public List<Customer> getCustomersByShopId(Connection con, int shopId)
             throws SQLException {
 
         List<Customer> customers = new ArrayList<>();
 
-        String sql = "SELECT CUSTOMER_ID, SHOP_ID, CUSTOMER_NAME, MOBILE, EMAIL, ADDRESS, CREATED_DATE, STATUS FROM CUSTOMERS WHERE SHOP_ID = ? AND STATUS = 'ACTIVE' ORDER BY CUSTOMER_ID DESC";
+        String sql = "SELECT C.CUSTOMER_ID, C.SHOP_ID, C.CUSTOMER_NAME, C.MOBILE, C.EMAIL, C.ADDRESS, C.CREATED_DATE, C.STATUS, NVL((SELECT SUM(S.BALANCE_DUE) FROM SALES S WHERE S.CUSTOMER_ID = C.CUSTOMER_ID AND S.SHOP_ID = C.SHOP_ID AND S.SALE_STATUS = 'COMPLETED' AND S.BALANCE_DUE > 0), 0) AS PENDING_UDHAR FROM CUSTOMERS C WHERE C.SHOP_ID = ? AND C.STATUS = 'ACTIVE' ORDER BY PENDING_UDHAR DESC, C.CUSTOMER_ID DESC";
 
         try (PreparedStatement ps = con.prepareStatement(sql)) {
 
@@ -52,11 +52,11 @@ public class CustomerDAO {
         return customers;
     }
 
-    // GET CUSTOMER BY ID
+    // GET CUSTOMER BY ID WITH PENDING UDHAR
     public Customer getCustomerById(Connection con, int customerId, int shopId)
             throws SQLException {
 
-        String sql = "SELECT CUSTOMER_ID, SHOP_ID, CUSTOMER_NAME, MOBILE, EMAIL, ADDRESS, CREATED_DATE, STATUS FROM CUSTOMERS WHERE CUSTOMER_ID = ? AND SHOP_ID = ? AND STATUS = 'ACTIVE'";
+        String sql = "SELECT C.CUSTOMER_ID, C.SHOP_ID, C.CUSTOMER_NAME, C.MOBILE, C.EMAIL, C.ADDRESS, C.CREATED_DATE, C.STATUS, NVL((SELECT SUM(S.BALANCE_DUE) FROM SALES S WHERE S.CUSTOMER_ID = C.CUSTOMER_ID AND S.SHOP_ID = C.SHOP_ID AND S.SALE_STATUS = 'COMPLETED' AND S.BALANCE_DUE > 0), 0) AS PENDING_UDHAR FROM CUSTOMERS C WHERE C.CUSTOMER_ID = ? AND C.SHOP_ID = ? AND C.STATUS = 'ACTIVE'";
 
         try (PreparedStatement ps = con.prepareStatement(sql)) {
 
@@ -145,6 +145,9 @@ public class CustomerDAO {
         customer.setAddress(rs.getString("ADDRESS"));
         customer.setCreatedDate(rs.getDate("CREATED_DATE"));
         customer.setStatus(rs.getString("STATUS"));
+
+        // Map total pending Udhar
+        customer.setPendingUdhar(rs.getDouble("PENDING_UDHAR"));
 
         return customer;
     }

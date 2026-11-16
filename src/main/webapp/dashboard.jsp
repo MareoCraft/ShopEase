@@ -17,8 +17,8 @@ if (request.getAttribute("dashboard") == null) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet"
-          href="${pageContext.request.contextPath}/css/dashboard.css">
+   <link rel="stylesheet"
+         href="${pageContext.request.contextPath}/css/dashboard.css?v=2">
 
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -423,10 +423,191 @@ if (request.getAttribute("dashboard") == null) {
         </section>
 
 
-        <!-- FOOTER -->
-        <footer>
-            © 2026 ShopEase. All rights reserved.
-        </footer>
+        <!-- PENDING UDHAR AND LOW STOCK -->
+        <section class="section">
+
+            <div class="dashboard-details-grid">
+
+                <!-- PENDING UDHAR CUSTOMERS -->
+                <div class="dashboard-list-card">
+
+                    <div class="section-heading">
+                        <div>
+                            <h2>Pending Udhar Customers</h2>
+                            <p>Customers with outstanding payments</p>
+                        </div>
+
+                        <a href="${pageContext.request.contextPath}/udhar">
+                            View All
+                            <i data-lucide="arrow-up-right"></i>
+                        </a>
+                    </div>
+
+                    <div class="dashboard-table-wrapper">
+
+                        <table class="dashboard-table">
+
+                            <thead>
+                                <tr>
+                                    <th>Customer</th>
+                                    <th>Mobile</th>
+                                    <th>Pending Amount</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+
+                                <c:choose>
+                                    <c:when test="${not empty dashboard.pendingUdharCustomers}">
+
+                                        <c:forEach var="customer"
+                                                   items="${dashboard.pendingUdharCustomers}">
+
+                                            <tr>
+                                                <td>
+                                                    <strong>
+                                                        <c:out value="${customer.customerName}"/>
+                                                    </strong>
+                                                </td>
+
+                                                <td>
+                                                    <c:choose>
+                                                        <c:when test="${not empty customer.mobile}">
+                                                            <c:out value="${customer.mobile}"/>
+                                                        </c:when>
+                                                        <c:otherwise>
+                                                            -
+                                                        </c:otherwise>
+                                                    </c:choose>
+                                                </td>
+
+                                                <td>
+                                                    <span class="dashboard-amount">
+                                                        ₹<fmt:formatNumber
+                                                            value="${customer.pendingUdhar}"
+                                                            minFractionDigits="2"
+                                                            maxFractionDigits="2"/>
+                                                    </span>
+                                                </td>
+                                            </tr>
+
+                                        </c:forEach>
+
+                                    </c:when>
+
+                                    <c:otherwise>
+                                        <tr>
+                                            <td colspan="3" class="dashboard-empty">
+                                                No pending Udhar customers
+                                            </td>
+                                        </tr>
+                                    </c:otherwise>
+                                </c:choose>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+
+                <!-- LOW STOCK PRODUCTS -->
+                <div class="dashboard-list-card">
+
+                    <div class="section-heading">
+                        <div>
+                            <h2>Low Stock Products</h2>
+                            <p>Products that need stock attention</p>
+                        </div>
+
+                        <a href="${pageContext.request.contextPath}/stock">
+                            View All
+                            <i data-lucide="arrow-up-right"></i>
+                        </a>
+                    </div>
+
+                    <div class="dashboard-table-wrapper">
+
+                        <table class="dashboard-table">
+
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Available</th>
+                                    <th>Minimum</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+
+                                <c:choose>
+                                    <c:when test="${not empty dashboard.lowStockProductList}">
+
+                                        <c:forEach var="product"
+                                                   items="${dashboard.lowStockProductList}">
+
+                                            <tr>
+                                                <td>
+                                                    <strong>
+                                                        <c:out value="${product.productName}"/>
+                                                    </strong>
+
+                                                    <small class="dashboard-sku">
+                                                        SKU:
+                                                        <c:choose>
+                                                            <c:when test="${not empty product.sku}">
+                                                                <c:out value="${product.sku}"/>
+                                                            </c:when>
+                                                            <c:otherwise>
+                                                                -
+                                                            </c:otherwise>
+                                                        </c:choose>
+                                                    </small>
+                                                </td>
+
+                                                <td>
+                                                    <span class="stock-warning">
+                                                        <fmt:formatNumber
+                                                            value="${product.stockQuantity}"
+                                                            maxFractionDigits="2"/>
+                                                        <c:out value="${product.unit}"/>
+                                                    </span>
+                                                </td>
+
+                                                <td>
+                                                    <fmt:formatNumber
+                                                        value="${product.minStockLevel}"
+                                                        maxFractionDigits="2"/>
+                                                    <c:out value="${product.unit}"/>
+                                                </td>
+                                            </tr>
+
+                                        </c:forEach>
+
+                                    </c:when>
+
+                                    <c:otherwise>
+                                        <tr>
+                                            <td colspan="3" class="dashboard-empty">
+                                                All products have sufficient stock
+                                            </td>
+                                        </tr>
+                                    </c:otherwise>
+                                </c:choose>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
 
     </main>
 

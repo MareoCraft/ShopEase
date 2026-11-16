@@ -1,6 +1,7 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -10,12 +11,16 @@
     <title>Customer Management | ShopEase</title>
 
     <link rel="stylesheet"
-          href="${pageContext.request.contextPath}/css/customers.css">
+          href="${pageContext.request.contextPath}/css/customers.css?v=2">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
 
 <div class="page-container">
 
+    <!-- PAGE HEADER -->
     <header class="page-header">
         <div>
             <h1>Customer Management</h1>
@@ -26,6 +31,7 @@
            class="back-button">Back to Dashboard</a>
     </header>
 
+    <!-- MESSAGES -->
     <c:if test="${param.success == 'added'}">
         <div class="success-message">Customer added successfully!</div>
     </c:if>
@@ -113,9 +119,20 @@
                 <p>All active customers registered in your shop.</p>
             </div>
 
-            <span class="customer-count">
-                ${customers.size()} Customers
-            </span>
+            <!-- CUSTOMER SEARCH -->
+                    <div class="customer-search">
+                        <span class="search-symbol"><i data-lucide="search"></i></span>
+
+                        <input
+                            type="search"
+                            id="customerSearch"
+                            placeholder="Search by customer name or mobile number..."
+                            autocomplete="off">
+
+                        <button type="button" id="clearCustomerSearch">
+                            Clear
+                        </button>
+                    </div>
         </div>
 
         <div class="table-wrapper">
@@ -123,93 +140,128 @@
             <table>
 
                 <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Customer Name</th>
-                    <th>Mobile</th>
-                    <th>Email</th>
-                    <th>Address</th>
-                    <th>Registered Date</th>
-                    <th>Actions</th>
-                </tr>
+                    <tr>
+                        <th>#</th>
+                        <th>Customer Name</th>
+                        <th>Mobile</th>
+                        <th>Pending Udhar</th>
+                        <th>Email</th>
+                        <th>Address</th>
+                        <th>Registered Date</th>
+                        <th>Actions</th>
+                    </tr>
                 </thead>
 
                 <tbody>
 
-                <c:forEach var="customer"
-                           items="${customers}"
-                           varStatus="status">
+                    <c:forEach var="customer"
+                               items="${customers}"
+                               varStatus="status">
 
-                    <tr>
+                        <tr data-customer-row
+                            data-name="<c:out value='${customer.customerName}'/>"
+                            data-mobile="<c:out value='${customer.mobile}'/>">
 
-                        <td>${status.count}</td>
+                            <td>${status.count}</td>
 
-                        <td>
-                            <strong>
-                                <c:out value="${customer.customerName}"/>
-                            </strong>
-                        </td>
+                            <td>
+                                <strong>
+                                    <c:out value="${customer.customerName}"/>
+                                </strong>
+                            </td>
 
-                        <td>
-                            <c:out value="${customer.mobile}"
-                                   default="Not provided"/>
-                        </td>
+                            <td>
+                                <c:out value="${customer.mobile}"
+                                       default="Not provided"/>
+                            </td>
 
-                        <td>
-                            <c:out value="${customer.email}"
-                                   default="Not provided"/>
-                        </td>
+                            <!-- CUSTOMER PENDING UDHAR -->
+                            <td>
+                                <c:choose>
+                                    <c:when test="${customer.pendingUdhar > 0}">
+                                        <span class="pending-amount">
+                                            ₹<fmt:formatNumber
+                                                value="${customer.pendingUdhar}"
+                                                pattern="#,##0.00"/>
+                                        </span>
+                                    </c:when>
 
-                        <td>
-                            <c:out value="${customer.address}"
-                                   default="Not provided"/>
-                        </td>
+                                    <c:otherwise>
+                                        <span class="no-pending">
+                                            No Pending
+                                        </span>
+                                    </c:otherwise>
+                                </c:choose>
+                            </td>
 
-                        <td>
-                            <c:out value="${customer.createdDate}"/>
-                        </td>
+                            <td>
+                                <c:out value="${customer.email}"
+                                       default="Not provided"/>
+                            </td>
 
-                        <td class="action-cell">
+                            <td>
+                                <c:out value="${customer.address}"
+                                       default="Not provided"/>
+                            </td>
 
-                            <button type="button"
-                                    class="edit-button"
-                                    onclick="openEditModal(
-                                        '${customer.customerId}',
-                                        '${customer.customerName}',
-                                        '${customer.mobile}',
-                                        '${customer.email}',
-                                        '${customer.address}'
-                                    )">
-                                Edit
-                            </button>
+                            <td>
+                                <c:out value="${customer.createdDate}"/>
+                            </td>
 
-                            <form action="${pageContext.request.contextPath}/customers"
-                                  method="post"
-                                  onsubmit="return confirm('Are you sure you want to deactivate this customer?');">
+                            <td class="action-cell">
 
-                                <input type="hidden" name="action" value="delete">
-                                <input type="hidden"
-                                       name="customerId"
-                                       value="${customer.customerId}">
-
-                                <button type="submit" class="delete-button">
-                                    Delete
+                                <button type="button"
+                                        class="edit-button"
+                                        onclick="openEditModal(
+                                            this.dataset.id,
+                                            this.dataset.name,
+                                            this.dataset.mobile,
+                                            this.dataset.email,
+                                            this.dataset.address
+                                        )"
+                                        data-id="<c:out value='${customer.customerId}'/>"
+                                        data-name="<c:out value='${customer.customerName}'/>"
+                                        data-mobile="<c:out value='${customer.mobile}'/>"
+                                        data-email="<c:out value='${customer.email}'/>"
+                                        data-address="<c:out value='${customer.address}'/>">
+                                    Edit
                                 </button>
-                            </form>
 
+                                <form action="${pageContext.request.contextPath}/customers"
+                                      method="post"
+                                      onsubmit="return confirm('Are you sure you want to deactivate this customer?');">
+
+                                    <input type="hidden" name="action" value="delete">
+
+                                    <input type="hidden"
+                                           name="customerId"
+                                           value="${customer.customerId}">
+
+                                    <button type="submit" class="delete-button">
+                                        Delete
+                                    </button>
+                                </form>
+
+                            </td>
+
+                        </tr>
+
+                    </c:forEach>
+
+                    <c:if test="${empty customers}">
+                        <tr>
+                            <td colspan="8" class="empty-state">
+                                No customers registered yet.
+                            </td>
+                        </tr>
+                    </c:if>
+
+                    <!-- NO SEARCH RESULTS -->
+                    <tr id="noSearchResults" style="display: none;">
+                        <td colspan="8" class="empty-state">
+                            No customers found matching your search.
                         </td>
-
                     </tr>
-
-                </c:forEach>
-
-                <c:if test="${empty customers}">
-                    <tr>
-                        <td colspan="7" class="empty-state">
-                            No customers registered yet.
-                        </td>
-                    </tr>
-                </c:if>
 
                 </tbody>
 
@@ -219,6 +271,7 @@
     </section>
 
 </div>
+
 
 <!-- EDIT CUSTOMER MODAL -->
 <div class="modal-overlay" id="editModal">
@@ -291,28 +344,85 @@
     </div>
 </div>
 
+
 <script>
 
-    function openEditModal(id, name, mobile, email, address) {
+// =====================================
+// EDIT CUSTOMER MODAL
+// =====================================
 
-        document.getElementById("editCustomerId").value = id;
-        document.getElementById("editCustomerName").value = name;
-        document.getElementById("editMobile").value = mobile === "null" ? "" : mobile;
-        document.getElementById("editEmail").value = email === "null" ? "" : email;
-        document.getElementById("editAddress").value = address === "null" ? "" : address;
+function openEditModal(id, name, mobile, email, address) {
 
-        document.getElementById("editModal").classList.add("active");
+    document.getElementById("editCustomerId").value = id;
+    document.getElementById("editCustomerName").value = name || "";
+    document.getElementById("editMobile").value = mobile || "";
+    document.getElementById("editEmail").value = email || "";
+    document.getElementById("editAddress").value = address || "";
+
+    document.getElementById("editModal").classList.add("active");
+}
+
+function closeEditModal() {
+    document.getElementById("editModal").classList.remove("active");
+}
+
+document.getElementById("editModal").addEventListener("click", function(e) {
+    if (e.target === this) {
+        closeEditModal();
     }
+});
 
-    function closeEditModal() {
-        document.getElementById("editModal").classList.remove("active");
-    }
 
-    document.getElementById("editModal").addEventListener("click", function(e) {
-        if (e.target === this) {
-            closeEditModal();
+// =====================================
+// CUSTOMER LIVE SEARCH
+// =====================================
+
+const customerSearch = document.getElementById("customerSearch");
+const clearCustomerSearch = document.getElementById("clearCustomerSearch");
+const customerCount = document.getElementById("customerCount");
+const noSearchResults = document.getElementById("noSearchResults");
+
+const customerRows = document.querySelectorAll("[data-customer-row]");
+
+function filterCustomers() {
+
+    const searchValue = customerSearch.value.trim().toLowerCase();
+
+    let visibleCount = 0;
+
+    customerRows.forEach(function(row) {
+
+        const name = (row.dataset.name || "").toLowerCase();
+        const mobile = (row.dataset.mobile || "").toLowerCase();
+
+        const matches =
+            name.includes(searchValue) ||
+            mobile.includes(searchValue);
+
+        row.style.display = matches ? "" : "none";
+
+        if (matches) {
+            visibleCount++;
         }
     });
+
+    customerCount.textContent =
+        visibleCount + (visibleCount === 1 ? " Customer" : " Customers");
+
+    noSearchResults.style.display =
+        searchValue !== "" && visibleCount === 0 ? "" : "none";
+}
+
+customerSearch.addEventListener("input", filterCustomers);
+
+clearCustomerSearch.addEventListener("click", function() {
+
+    customerSearch.value = "";
+
+    filterCustomers();
+
+    customerSearch.focus();
+});
 
 </script>
 

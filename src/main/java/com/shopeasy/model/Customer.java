@@ -14,6 +14,9 @@ public class Customer {
     private Date createdDate;
     private String status;
 
+    // Total pending Udhar amount
+    private double pendingUdhar;
+
     public int getCustomerId() {
         return customerId;
     }
@@ -76,5 +79,13 @@ public class Customer {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public double getPendingUdhar() {
+        return pendingUdhar;
+    }
+
+    public void setPendingUdhar(double pendingUdhar) {
+        this.pendingUdhar = pendingUdhar;
     }
 }

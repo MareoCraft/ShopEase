@@ -299,3 +299,88 @@ td strong {
     }
 
 }
+
+
+/* CUSTOMER PENDING UDHAR */
+
+.pending-amount {
+    display: inline-block;
+    color: #dc2626;
+    background: #fef2f2;
+    padding: 7px 12px;
+    border-radius: 8px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.no-pending {
+    display: inline-block;
+    color: #15803d;
+    background: #f0fdf4;
+    padding: 7px 12px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+
+/* CUSTOMER LIVE SEARCH */
+
+.customer-search {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    max-width: 520px;
+    margin: 20px 0;
+    padding: 11px 14px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    transition: 0.2s ease;
+}
+
+.customer-search:focus-within {
+    border-color: #93c5fd;
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.08);
+}
+
+.search-symbol {
+    color: #64748b;
+    font-size: 17px;
+}
+
+.customer-search input {
+    flex: 1;
+    min-width: 0;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: #1e293b;
+    font-size: 13px;
+}
+
+.customer-search input::placeholder {
+    color: #94a3b8;
+}
+
+.customer-search button {
+    border: none;
+    background: transparent;
+    color: #2563eb;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.customer-search button:hover {
+    color: #1d4ed8;
+}
+
+@media (max-width: 600px) {
+    .customer-search {
+        max-width: 100%;
+    }
+}

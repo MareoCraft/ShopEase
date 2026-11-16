@@ -9,6 +9,9 @@ public class Sale {
     private int shopId;
     private int customerId;
 
+    private String customerName;
+    private String customerMobile;
+
     private String billNumber;
 
     private double subtotal;
@@ -22,8 +25,6 @@ public class Sale {
     private String saleStatus;
 
     private Date createdDate;
-
-    // Getters and Setters
 
     public int getSaleId() {
         return saleId;
@@ -47,6 +48,22 @@ public class Sale {
 
     public void setCustomerId(int customerId) {
         this.customerId = customerId;
+    }
+
+    public String getCustomerName() {
+        return customerName;
+    }
+
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
+    }
+
+    public String getCustomerMobile() {
+        return customerMobile;
+    }
+
+    public void setCustomerMobile(String customerMobile) {
+        this.customerMobile = customerMobile;
     }
 
     public String getBillNumber() {

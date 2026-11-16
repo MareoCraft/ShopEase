@@ -52,6 +52,7 @@ public class UdharDAO {
         return null;
     }
 
+
     // Save a new Udhar collection
     public void addCollection(Connection con, UdharCollection collection)
             throws SQLException {
@@ -78,6 +79,7 @@ public class UdharDAO {
         }
     }
 
+
     // Update paid amount and outstanding balance in SALES
     public void updateSaleBalance(Connection con, int saleId, int shopId,
                                   double paidAmount, double balanceDue,
@@ -101,6 +103,7 @@ public class UdharDAO {
             }
         }
     }
+
 
     // Get collection history for a particular bill
     public List<UdharCollection> getCollectionsBySaleId(
@@ -143,12 +146,24 @@ public class UdharDAO {
         return collections;
     }
 
+
+    // Get outstanding bills with customer name and mobile number
     public List<Sale> getOutstandingSalesByShopId(
             Connection con, int shopId) throws SQLException {
 
         List<Sale> sales = new ArrayList<>();
 
-        String sql = "SELECT * FROM SALES WHERE SHOP_ID = ? AND SALE_STATUS = 'COMPLETED' AND PAYMENT_STATUS IN ('UNPAID','PARTIAL') AND BALANCE_DUE > 0 ORDER BY CREATED_DATE DESC";
+        String sql =
+                "SELECT S.*, C.CUSTOMER_NAME, C.MOBILE AS CUSTOMER_MOBILE " +
+                        "FROM SALES S " +
+                        "INNER JOIN CUSTOMERS C " +
+                        "ON S.CUSTOMER_ID = C.CUSTOMER_ID " +
+                        "AND S.SHOP_ID = C.SHOP_ID " +
+                        "WHERE S.SHOP_ID = ? " +
+                        "AND S.SALE_STATUS = 'COMPLETED' " +
+                        "AND S.PAYMENT_STATUS IN ('UNPAID','PARTIAL') " +
+                        "AND S.BALANCE_DUE > 0 " +
+                        "ORDER BY S.CREATED_DATE DESC";
 
         try (PreparedStatement ps = con.prepareStatement(sql)) {
 
@@ -163,6 +178,13 @@ public class UdharDAO {
                     sale.setSaleId(rs.getInt("SALE_ID"));
                     sale.setShopId(rs.getInt("SHOP_ID"));
                     sale.setCustomerId(rs.getInt("CUSTOMER_ID"));
+
+                    sale.setCustomerName(
+                            rs.getString("CUSTOMER_NAME"));
+
+                    sale.setCustomerMobile(
+                            rs.getString("CUSTOMER_MOBILE"));
+
                     sale.setBillNumber(rs.getString("BILL_NUMBER"));
                     sale.setSubtotal(rs.getDouble("SUBTOTAL"));
                     sale.setDiscountAmount(rs.getDouble("DISCOUNT_AMOUNT"));
@@ -181,6 +203,8 @@ public class UdharDAO {
         return sales;
     }
 
+
+    // Get total outstanding amount
     public double getTotalOutstanding(Connection con, int shopId)
             throws SQLException {
 
