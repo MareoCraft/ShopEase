@@ -1,0 +1,176 @@
+
+/* PREMIUM BRANDING PANEL */
+
+.form-header {
+    grid-column: 1;
+    grid-row: 1;
+    padding: 42px 38px;
+    background: linear-gradient(150deg, #1746bd, #2563eb 60%, #4385f5);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+}
+
+.form-header::before {
+    content: "";
+    position: absolute;
+    width: 360px;
+    height: 360px;
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 50%;
+    right: -190px;
+    top: -120px;
+}
+
+.form-header::after {
+    content: "";
+    position: absolute;
+    width: 280px;
+    height: 280px;
+    border: 1px solid rgba(255,255,255,.10);
+    border-radius: 50%;
+    left: -170px;
+    bottom: -130px;
+}
+
+/* LOGO */
+
+.brand-logo {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: -.8px;
+    position: relative;
+    z-index: 1;
+}
+
+.brand-icon {
+    width: 39px;
+    height: 39px;
+    display: grid;
+    place-items: center;
+    border-radius: 11px;
+    background: white;
+    color: #2563eb;
+}
+
+/* CONTENT */
+
+.brand-content {
+    position: relative;
+    z-index: 1;
+    margin: 45px 0;
+}
+
+.eyebrow {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #c9dcff;
+}
+
+.brand-content h1 {
+    font-size: 29px;
+    line-height: 1.3;
+    letter-spacing: -1px;
+    margin: 17px 0 13px;
+    max-width: 370px;
+}
+
+.brand-content > p {
+    color: #e0ebff;
+    font-size: 12px;
+    line-height: 1.8;
+    max-width: 350px;
+}
+
+/* SERVICES */
+
+.service-list {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+    margin-top: 29px;
+}
+
+.service-item {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+}
+
+.service-icon {
+    flex-shrink: 0;
+    width: 37px;
+    height: 37px;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(255,255,255,.2);
+    background: rgba(255,255,255,.12);
+    border-radius: 10px;
+    font-size: 17px;
+}
+
+.service-item strong,
+.service-item small {
+    display: block;
+}
+
+.service-item strong {
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.service-item small {
+    color: #d5e3ff;
+    font-size: 10px;
+    margin-top: 4px;
+}
+
+/* FOOTER */
+
+.brand-footer {
+    position: relative;
+    z-index: 1;
+    padding-top: 18px;
+    border-top: 1px solid rgba(255,255,255,.2);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: #d5e3ff;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+    .form-header {
+        padding: 30px;
+    }
+
+    .brand-content {
+        margin: 25px 0;
+    }
+
+    .brand-content h1 {
+        font-size: 25px;
+    }
+}
+
+@media (max-width: 520px) {
+    .brand-content {
+        margin: 25px 0;
+    }
+
+    .service-list {
+        gap: 11px;
+    }
+
+    .brand-footer {
+        font-size: 8px;
+    }
+}

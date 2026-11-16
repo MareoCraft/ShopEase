@@ -1,0 +1,360 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+    --text: #172033;
+    --muted: #8490a3;
+    --border: #e5eaf2;
+    --background: #f4f7fc;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* HIDE SCROLLBARS EVERYWHERE */
+
+/* Chrome, Edge, Safari */
+*::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+}
+
+/* Firefox */
+* {
+    scrollbar-width: none;
+}
+
+/* Internet Explorer / Legacy Edge */
+* {
+    -ms-overflow-style: none;
+}
+
+
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--background);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+}
+
+/* MAIN CONTAINER */
+
+.container {
+    position: relative;
+    width: 100%;
+    max-width: 1150px;
+    min-height: 650px;
+    display: grid;
+    grid-template-columns: 0.72fr 1.28fr;
+    align-items: stretch;
+    background: #fff;
+    border: 1px solid #e9edf5;
+    overflow: hidden;
+    box-shadow: 0 25px 70px rgba(30, 55, 100, .08);
+}
+
+/* BRANDING PANEL */
+
+.form-header {
+    grid-column: 1;
+    grid-row: 1;
+    padding: 45px;
+    background: linear-gradient(145deg, #1d4ed8, #3b82f6);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    border-top-right-radius: 40px;
+    border-bottom-right-radius: 40px;
+    overflow: hidden;
+}
+
+.form-header::before {
+    content: "";
+    position: absolute;
+    width: 320px;
+    height: 320px;
+    border: 1px solid rgba(255,255,255,.16);
+    border-radius: 50%;
+    right: -160px;
+    top: -100px;
+}
+
+.form-header::after {
+    content: "";
+    position: absolute;
+    width: 240px;
+    height: 240px;
+    border: 1px solid rgba(255,255,255,.16);
+    border-radius: 50%;
+    left: -120px;
+    bottom: -100px;
+}
+
+.form-header h1 {
+    font-size: 39px;
+    font-weight: 800;
+    letter-spacing: -2px;
+    margin-bottom: 14px;
+    position: relative;
+    z-index: 1;
+}
+
+.form-header p {
+    max-width: 260px;
+    font-size: 14px;
+    line-height: 1.8;
+    color: rgba(255,255,255,.85);
+    position: relative;
+    z-index: 1;
+}
+
+/* PROFILE FORM */
+
+.container > form {
+    grid-column: 2;
+    grid-row: 1;
+    align-self: center;
+    width: 100%;
+    padding: 48px 55px;
+}
+
+form h2 {
+    font-size: 25px;
+    font-weight: 800;
+    letter-spacing: -.7px;
+    margin-bottom: 30px;
+}
+
+/* FORM GRID */
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px 17px;
+}
+
+.form-group {
+    min-width: 0;
+    margin: 0;
+}
+
+.form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+label {
+    display: block;
+    margin-bottom: 9px;
+    color: #344054;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/* INPUTS */
+
+input,
+select,
+textarea {
+    display: block;
+    width: 100%;
+    height: 48px;
+    padding: 0 14px;
+    background: #fbfcfe;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    outline: none;
+    color: var(--text);
+    font-family: inherit;
+    font-size: 13px;
+    transition: all .25s ease;
+}
+
+input::placeholder {
+    color: #a4afbf;
+}
+
+input:hover {
+    border-color: #b7c8e5;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    background: #fff;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(37,99,235,.10);
+}
+
+/* READONLY SHOP ID */
+
+input[readonly] {
+    background: #f1f5f9;
+    color: #64748b;
+    border-color: #e2e8f0;
+    cursor: not-allowed;
+}
+
+/* UPDATE BUTTON */
+
+button[type="submit"] {
+    width: 100%;
+    min-height: 50px;
+    margin-top: 28px;
+    padding: 13px 20px;
+    border: none;
+    border-radius: 10px;
+    background: var(--primary);
+    color: #fff;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all .25s ease;
+}
+
+button[type="submit"]:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 9px 20px rgba(37,99,235,.2);
+}
+
+button[type="submit"]:active {
+    transform: scale(.98);
+}
+
+/* ALERT MESSAGES */
+
+.error-message,
+.success-message {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    width: auto;
+    padding: 13px 15px;
+    border-radius: 9px;
+    font-size: 12px;
+    line-height: 1.5;
+    z-index: 2;
+}
+
+.error-message {
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    color: #dc2626;
+}
+
+.success-message {
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    color: #15803d;
+}
+
+/* BACK TO DASHBOARD */
+
+.login-link {
+    grid-column: 2;
+    grid-row: 2;
+    padding: 0 55px 30px;
+    text-align: center;
+    font-size: 13px;
+    color: var(--muted);
+}
+
+.login-link a {
+    color: var(--primary);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.login-link a:hover {
+    text-decoration: underline;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 850px) {
+    body {
+        padding: 20px;
+        align-items: flex-start;
+    }
+
+    .container {
+        max-width: 650px;
+        grid-template-columns: 1fr;
+    }
+
+    .form-header {
+        grid-column: 1;
+        grid-row: 1;
+        min-height: 170px;
+        padding: 30px;
+    }
+
+    .form-header h1 {
+        font-size: 32px;
+    }
+
+    .container > form {
+        grid-column: 1;
+        grid-row: 2;
+        padding: 35px 30px 20px;
+    }
+
+    .login-link {
+        grid-column: 1;
+        grid-row: 3;
+        padding: 10px 30px 30px;
+    }
+
+    .error-message,
+    .success-message {
+        position: static;
+        width: auto;
+        margin: 15px 25px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 12px;
+    }
+
+    .form-header {
+        min-height: 145px;
+        padding: 25px;
+    }
+
+    .container > form {
+        padding: 28px 20px 15px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+        gap: 17px;
+    }
+
+    .form-group.full-width {
+        grid-column: auto;
+    }
+
+    form h2 {
+        font-size: 22px;
+        margin-bottom: 24px;
+    }
+
+    .login-link {
+        padding: 10px 20px 25px;
+    }
+}
