@@ -43,7 +43,7 @@ if (request.getAttribute("dashboard") == null) {
 
             <div>
                 <h3><c:out value="${dashboard.shopName}"/></h3>
-                <p>Shop Owner</p>
+                <p>Shop Name</p>
             </div>
         </div>
 
@@ -89,6 +89,13 @@ if (request.getAttribute("dashboard") == null) {
             <a href="${pageContext.request.contextPath}/udhar">
                 <i data-lucide="wallet"></i>
                 <span>Udhar Management</span>
+            </a>
+
+            <a href="${pageContext.request.contextPath}/expenses"
+               class="menu-item">
+
+                <i data-lucide="wallet"></i>
+                <span>Expense Management</span>
             </a>
 
             <a href="${pageContext.request.contextPath}/reports">

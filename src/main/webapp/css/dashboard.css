@@ -95,6 +95,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 7px;
+    overflow: auto;
 }
 
 .sidebar nav a {
@@ -151,6 +152,12 @@ body {
 }
 
 .user-profile {
+    background: #3d7bf2;
+    padding: 10px 10px;
+    border-radius: 15px;
+    border-top-left-radius: 30px;
+    color: white;
+    border-bottom-left-radius: 30px;
     display: flex;
     align-items: center;
     gap: 10px;
