@@ -7,6 +7,7 @@ import com.shopeasy.model.StockHistory;
 import com.shopeasy.util.DBConnection;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.util.List;
 
 public class StockService {
@@ -43,32 +44,24 @@ public class StockService {
 
             try {
 
-                // Lock product row to prevent simultaneous stock updates
                 Product product = stockDAO.getProductForUpdate(
-                        con,
-                        productId,
-                        shopId
+                        con, productId, shopId
                 );
 
                 if (product == null) {
-                    throw new IllegalArgumentException(
-                            "Product not found.");
+                    throw new IllegalArgumentException("Product not found.");
                 }
 
                 double previousQuantity = product.getStockQuantity();
                 double newQuantity;
                 double quantityChange;
 
-                // STOCK IN
                 if ("STOCK_IN".equals(movementType)) {
 
                     newQuantity = previousQuantity + quantity;
                     quantityChange = quantity;
 
-                }
-
-                // STOCK OUT
-                else if ("STOCK_OUT".equals(movementType)) {
+                } else if ("STOCK_OUT".equals(movementType)) {
 
                     if (quantity > previousQuantity) {
                         throw new IllegalArgumentException(
@@ -78,36 +71,24 @@ public class StockService {
                     newQuantity = previousQuantity - quantity;
                     quantityChange = -quantity;
 
-                }
+                } else if ("ADJUSTMENT".equals(movementType)) {
 
-                // STOCK ADJUSTMENT
-                else if ("ADJUSTMENT".equals(movementType)) {
-
-                    // For adjustment, quantity represents actual stock
                     newQuantity = quantity;
                     quantityChange = newQuantity - previousQuantity;
 
-                }
-
-                else {
+                } else {
                     throw new IllegalArgumentException(
                             "Invalid stock movement type.");
                 }
 
-                // Update product quantity
                 boolean updated = stockDAO.updateStockQuantity(
-                        con,
-                        productId,
-                        shopId,
-                        newQuantity
+                        con, productId, shopId, newQuantity
                 );
 
                 if (!updated) {
-                    throw new Exception(
-                            "Unable to update product stock.");
+                    throw new Exception("Unable to update product stock.");
                 }
 
-                // Prepare stock history
                 StockHistory history = new StockHistory();
 
                 history.setShopId(shopId);
@@ -120,25 +101,18 @@ public class StockService {
                 history.setReferenceId(0);
                 history.setNotes(notes);
 
-                // Insert stock history
-                int historyId = stockDAO.addStockHistory(
-                        con,
-                        history
-                );
+                int historyId = stockDAO.addStockHistory(con, history);
 
                 if (historyId <= 0) {
-                    throw new Exception(
-                            "Unable to save stock history.");
+                    throw new Exception("Unable to save stock history.");
                 }
 
-                // Both operations succeeded
                 con.commit();
 
                 return true;
 
             } catch (Exception e) {
 
-                // Roll back both stock update and history insertion
                 try {
                     con.rollback();
                 } catch (Exception rollbackException) {
@@ -150,20 +124,40 @@ public class StockService {
         }
     }
 
-    // GET STOCK HISTORY
+    // GET ALL STOCK HISTORY
     public List<StockHistory> getStockHistory(int shopId)
             throws Exception {
 
+        return getStockHistory(shopId, null, null);
+    }
+
+    // GET STOCK HISTORY WITH DATE FILTER
+    public List<StockHistory> getStockHistory(
+            int shopId,
+            Date fromDate,
+            Date toDate) throws Exception {
+
         if (shopId <= 0) {
+            throw new IllegalArgumentException("Invalid shop ID.");
+        }
+
+        if ((fromDate == null) != (toDate == null)) {
             throw new IllegalArgumentException(
-                    "Invalid shop ID.");
+                    "Both start date and end date are required.");
+        }
+
+        if (fromDate != null && fromDate.after(toDate)) {
+            throw new IllegalArgumentException(
+                    "Start date cannot be after end date.");
         }
 
         try (Connection con = DBConnection.getConnection()) {
 
             return stockDAO.getStockHistoryByShopId(
                     con,
-                    shopId
+                    shopId,
+                    fromDate,
+                    toDate
             );
         }
     }
@@ -179,9 +173,7 @@ public class StockService {
                     "Invalid shop or product information.");
         }
 
-        if (movementType == null ||
-                movementType.trim().isEmpty()) {
-
+        if (movementType == null || movementType.trim().isEmpty()) {
             throw new IllegalArgumentException(
                     "Stock movement type is required.");
         }

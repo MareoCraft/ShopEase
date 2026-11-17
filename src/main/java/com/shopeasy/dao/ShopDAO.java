@@ -14,6 +14,7 @@ public class ShopDAO {
     public int insertShop(Connection con, Shop shop)
             throws SQLException {
 
+        // Generate numeric SHOP_ID
         String idQuery = "SELECT SHOP_SEQ.NEXTVAL FROM DUAL";
 
         int shopId;
@@ -21,30 +22,42 @@ public class ShopDAO {
         try (PreparedStatement ps = con.prepareStatement(idQuery);
              ResultSet rs = ps.executeQuery()) {
 
-            rs.next();
-            shopId = rs.getInt(1);
+            if (rs.next()) {
+                shopId = rs.getInt(1);
+            } else {
+                throw new SQLException("Unable to generate Shop ID.");
+            }
         }
 
-        String sql = "INSERT INTO SHOPS ( SHOP_ID, SHOP_NAME, SHOP_CATEGORY, OWNER_NAME, MOBILE, EMAIL, ADDRESS, CITY, STATE, PINCODE) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        // Generate formatted Shop Code
+        String shopCode = "SHOP_" + (1000 + shopId);
+
+        String sql = "INSERT INTO SHOPS (SHOP_ID, SHOP_CODE, SHOP_NAME, SHOP_CATEGORY, OWNER_NAME, MOBILE, EMAIL, ADDRESS, CITY, STATE, PINCODE) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try (PreparedStatement ps = con.prepareStatement(sql)) {
 
             ps.setInt(1, shopId);
-            ps.setString(2, shop.getShopName());
-            ps.setString(3, shop.getShopCategory());
-            ps.setString(4, shop.getOwnerName());
-            ps.setString(5, shop.getMobile());
-            ps.setString(6, shop.getEmail());
-            ps.setString(7, shop.getAddress());
-            ps.setString(8, shop.getCity());
-            ps.setString(9, shop.getState());
-            ps.setString(10, shop.getPincode());
+            ps.setString(2, shopCode);
+            ps.setString(3, shop.getShopName());
+            ps.setString(4, shop.getShopCategory());
+            ps.setString(5, shop.getOwnerName());
+            ps.setString(6, shop.getMobile());
+            ps.setString(7, shop.getEmail());
+            ps.setString(8, shop.getAddress());
+            ps.setString(9, shop.getCity());
+            ps.setString(10, shop.getState());
+            ps.setString(11, shop.getPincode());
 
             ps.executeUpdate();
         }
 
+        // Store generated values in Shop object
+        shop.setShopId(shopId);
+        shop.setShopCode(shopCode);
+
         return shopId;
     }
+
 
     // Find shop by SHOP_ID
     public Shop getShopById(Connection con, int shopId)
@@ -63,6 +76,7 @@ public class ShopDAO {
                     Shop shop = new Shop();
 
                     shop.setShopId(rs.getInt("SHOP_ID"));
+                    shop.setShopCode(rs.getString("SHOP_CODE"));
                     shop.setShopName(rs.getString("SHOP_NAME"));
                     shop.setShopCategory(rs.getString("SHOP_CATEGORY"));
                     shop.setOwnerName(rs.getString("OWNER_NAME"));
@@ -82,6 +96,7 @@ public class ShopDAO {
 
         return null;
     }
+
 
     // Update shop details
     public boolean updateShop(Connection con, Shop shop)

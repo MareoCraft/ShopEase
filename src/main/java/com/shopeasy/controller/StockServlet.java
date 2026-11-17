@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import java.io.IOException;
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 @WebServlet("/stock")
@@ -38,12 +40,24 @@ public class StockServlet extends HttpServlet {
         int shopId = (Integer) session.getAttribute("shopId");
 
         try {
-            loadStockPage(request, shopId);
+
+            String period = request.getParameter("period");
+            String fromDate = request.getParameter("fromDate");
+            String toDate = request.getParameter("toDate");
+
+            loadStockPage(
+                    request,
+                    shopId,
+                    period,
+                    fromDate,
+                    toDate
+            );
 
             request.getRequestDispatcher("/stock.jsp")
                     .forward(request, response);
 
         } catch (Exception e) {
+
             throw new ServletException(
                     "Unable to load stock management page.", e);
         }
@@ -119,7 +133,7 @@ public class StockServlet extends HttpServlet {
         // RELOAD PAGE AFTER VALIDATION ERROR
         try {
 
-            loadStockPage(request, shopId);
+            loadStockPage(request, shopId, null, null, null);
 
             request.getRequestDispatcher("/stock.jsp")
                     .forward(request, response);
@@ -131,17 +145,116 @@ public class StockServlet extends HttpServlet {
         }
     }
 
-    // LOAD PRODUCTS AND STOCK HISTORY
-    private void loadStockPage(HttpServletRequest request, int shopId)
+    // LOAD PRODUCTS AND FILTERED STOCK HISTORY
+    private void loadStockPage(HttpServletRequest request,
+                               int shopId,
+                               String selectedPeriod,
+                               String customFromDate,
+                               String customToDate)
             throws Exception {
 
         List<Product> products =
                 productService.getProducts(shopId);
 
+        String period = selectedPeriod;
+
+        if (period == null || period.trim().isEmpty()) {
+            period = "all";
+        }
+
+        period = period.trim().toLowerCase();
+
+        LocalDate startDate = null;
+        LocalDate endDate = null;
+
+        LocalDate today = LocalDate.now();
+
+        switch (period) {
+
+            case "today":
+                startDate = today;
+                endDate = today;
+                break;
+
+            case "yesterday":
+                startDate = today.minusDays(1);
+                endDate = startDate;
+                break;
+
+            case "last7days":
+                startDate = today.minusDays(6);
+                endDate = today;
+                break;
+
+            case "thismonth":
+                startDate = today.withDayOfMonth(1);
+                endDate = today;
+                break;
+
+            case "lastmonth":
+                LocalDate previousMonth = today.minusMonths(1);
+                startDate = previousMonth.withDayOfMonth(1);
+                endDate = previousMonth.withDayOfMonth(
+                        previousMonth.lengthOfMonth());
+                break;
+
+            case "custom":
+
+                if (customFromDate == null ||
+                        customFromDate.trim().isEmpty() ||
+                        customToDate == null ||
+                        customToDate.trim().isEmpty()) {
+
+                    throw new IllegalArgumentException(
+                            "Please select both From Date and To Date.");
+                }
+
+                startDate = LocalDate.parse(customFromDate);
+                endDate = LocalDate.parse(customToDate);
+
+                if (startDate.isAfter(endDate)) {
+                    throw new IllegalArgumentException(
+                            "From Date cannot be after To Date.");
+                }
+
+                break;
+
+            case "all":
+                break;
+
+            default:
+                throw new IllegalArgumentException(
+                        "Invalid stock history date filter.");
+        }
+
+        Date sqlFromDate = startDate == null
+                ? null : Date.valueOf(startDate);
+
+        Date sqlToDate = endDate == null
+                ? null : Date.valueOf(endDate);
+
         List<StockHistory> historyList =
-                stockService.getStockHistory(shopId);
+                stockService.getStockHistory(
+                        shopId,
+                        sqlFromDate,
+                        sqlToDate
+                );
 
         request.setAttribute("products", products);
         request.setAttribute("historyList", historyList);
+
+        request.setAttribute("selectedPeriod", period);
+
+        request.setAttribute(
+                "fromDate",
+                customFromDate == null ? "" : customFromDate
+        );
+
+        request.setAttribute(
+                "toDate",
+                customToDate == null ? "" : customToDate
+        );
+
+        request.setAttribute("historyCount", historyList.size());
     }
 }

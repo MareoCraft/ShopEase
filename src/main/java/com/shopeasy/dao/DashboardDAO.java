@@ -23,6 +23,7 @@ public class DashboardDAO {
         String sql =
                 "SELECT " +
                         "S.SHOP_ID, " +
+                        "S.SHOP_CODE, " +
                         "S.SHOP_NAME, " +
                         "S.OWNER_NAME, " +
                         "COUNT(U.USER_ID) AS TOTAL_USERS, " +
@@ -76,7 +77,7 @@ public class DashboardDAO {
                         "WHERE S.SHOP_ID = ? " +
                         "AND S.STATUS = 'ACTIVE' " +
 
-                        "GROUP BY S.SHOP_ID, S.SHOP_NAME, S.OWNER_NAME";
+                        "GROUP BY S.SHOP_ID, S.SHOP_CODE, S.SHOP_NAME, S.OWNER_NAME";
 
         try (PreparedStatement ps = con.prepareStatement(sql)) {
 
@@ -87,6 +88,7 @@ public class DashboardDAO {
                 if (rs.next()) {
 
                     dashboard.setShopId(rs.getInt("SHOP_ID"));
+                    dashboard.setShopCode(rs.getString("SHOP_CODE"));
                     dashboard.setShopName(rs.getString("SHOP_NAME"));
                     dashboard.setOwnerName(rs.getString("OWNER_NAME"));
                     dashboard.setTotalUsers(rs.getInt("TOTAL_USERS"));

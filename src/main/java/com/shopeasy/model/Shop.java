@@ -6,6 +6,7 @@ import java.sql.Date;
 public class Shop {
 
     private int shopId;
+    private String shopCode;
     private String shopName;
     private String shopCategory;
     private String ownerName;
@@ -18,9 +19,11 @@ public class Shop {
     private Date createdDate;
     private String status;
 
+
     // Default Constructor
     public Shop() {
     }
+
 
     // Parameterized Constructor
     public Shop(String shopName, String shopCategory,
@@ -40,6 +43,7 @@ public class Shop {
         this.pincode = pincode;
     }
 
+
     // Getters and Setters
 
     public int getShopId() {
@@ -50,6 +54,16 @@ public class Shop {
         this.shopId = shopId;
     }
 
+
+    public String getShopCode() {
+        return shopCode;
+    }
+
+    public void setShopCode(String shopCode) {
+        this.shopCode = shopCode;
+    }
+
+
     public String getShopName() {
         return shopName;
     }
@@ -57,6 +71,7 @@ public class Shop {
     public void setShopName(String shopName) {
         this.shopName = shopName;
     }
+
 
     public String getShopCategory() {
         return shopCategory;
@@ -66,6 +81,7 @@ public class Shop {
         this.shopCategory = shopCategory;
     }
 
+
     public String getOwnerName() {
         return ownerName;
     }
@@ -73,6 +89,7 @@ public class Shop {
     public void setOwnerName(String ownerName) {
         this.ownerName = ownerName;
     }
+
 
     public String getMobile() {
         return mobile;
@@ -82,6 +99,7 @@ public class Shop {
         this.mobile = mobile;
     }
 
+
     public String getEmail() {
         return email;
     }
@@ -89,6 +107,7 @@ public class Shop {
     public void setEmail(String email) {
         this.email = email;
     }
+
 
     public String getAddress() {
         return address;

@@ -1,8 +1,10 @@
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +12,7 @@
     <title>Stock Management | ShopEase</title>
 
     <link rel="stylesheet"
-          href="${pageContext.request.contextPath}/css/stock.css">
+          href="${pageContext.request.contextPath}/css/stock.css?v=3">
 </head>
 
 <body>
@@ -30,6 +32,7 @@
         </a>
     </header>
 
+
     <!-- SUCCESS MESSAGE -->
     <c:if test="${param.success == 'updated'}">
         <div class="success-message">
@@ -37,12 +40,14 @@
         </div>
     </c:if>
 
+
     <!-- ERROR MESSAGE -->
     <c:if test="${not empty error}">
         <div class="error-message">
             <c:out value="${error}"/>
         </div>
     </c:if>
+
 
     <!-- STOCK SUMMARY -->
     <section class="summary-section">
@@ -56,10 +61,11 @@
         <div class="summary-card">
             <span class="summary-label">Stock Movements</span>
             <h2>${historyList.size()}</h2>
-            <p>Total recorded movements</p>
+            <p>Movements in selected period</p>
         </div>
 
     </section>
+
 
     <!-- STOCK MANAGEMENT FORM -->
     <section class="form-card">
@@ -115,6 +121,7 @@
                             </select>
                         </div>
 
+
                         <!-- MOVEMENT TYPE -->
                         <div class="form-group">
                             <label for="movementType">Movement Type *</label>
@@ -131,6 +138,7 @@
                             </select>
                         </div>
 
+
                         <!-- QUANTITY -->
                         <div class="form-group">
                             <label for="quantity" id="quantityLabel">
@@ -145,6 +153,7 @@
                                    placeholder="Enter quantity"
                                    required>
                         </div>
+
 
                         <!-- NOTES -->
                         <div class="form-group">
@@ -175,20 +184,125 @@
 
     </section>
 
+    <!-- DATE FILTER -->
+            <div class="history-filter-card">
+                <form action="${pageContext.request.contextPath}/stock" method="get" id="stockFilterForm">
+
+                    <div class="history-filter-grid">
+
+                        <!-- PERIOD -->
+                        <div class="form-group">
+                            <select name="period" id="period">
+
+                                <option value="all"
+                                    ${selectedPeriod == 'all' ? 'selected' : ''}>
+                                    All History
+                                </option>
+
+                                <option value="today"
+                                    ${selectedPeriod == 'today' ? 'selected' : ''}>
+                                    Today
+                                </option>
+
+                                <option value="yesterday"
+                                    ${selectedPeriod == 'yesterday' ? 'selected' : ''}>
+                                    Yesterday
+                                </option>
+
+                                <option value="last7days"
+                                    ${selectedPeriod == 'last7days' ? 'selected' : ''}>
+                                    Last 7 Days
+                                </option>
+
+                                <option value="thismonth"
+                                    ${selectedPeriod == 'thismonth' ? 'selected' : ''}>
+                                    This Month
+                                </option>
+
+                                <option value="lastmonth"
+                                    ${selectedPeriod == 'lastmonth' ? 'selected' : ''}>
+                                    Last Month
+                                </option>
+
+                                <option value="custom"
+                                    ${selectedPeriod == 'custom' ? 'selected' : ''}>
+                                    Custom Date Range
+                                </option>
+
+                            </select>
+                        </div>
+
+
+                        <!-- FROM DATE -->
+                        <div class="form-group custom-date-field"
+                             id="fromDateGroup">
+
+                            <label for="fromDate">From Date</label>
+
+                            <input type="date"
+                                   name="fromDate"
+                                   id="fromDate"
+                                   value="<c:out value='${fromDate}'/>">
+
+                        </div>
+
+
+                        <!-- TO DATE -->
+                        <div class="form-group custom-date-field"
+                             id="toDateGroup">
+
+                            <label for="toDate">To Date</label>
+
+                            <input type="date"
+                                   name="toDate"
+                                   id="toDate"
+                                   value="<c:out value='${toDate}'/>">
+
+                        </div>
+
+
+                        <!-- FILTER BUTTONS -->
+                        <div class="filter-actions">
+
+                            <button type="submit" class="filter-button">
+                                Apply Filter
+                            </button>
+
+                            <a href="${pageContext.request.contextPath}/stock"
+                               class="reset-filter-button">
+                                Reset
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </form>
+
+                <div class="filter-result">
+                    Showing
+                    <strong>${historyCount}</strong>
+                    stock movement records
+                </div>
+
+            </div>
+
+
     <!-- STOCK HISTORY -->
     <section class="table-card">
 
         <div class="table-header">
             <div>
                 <h2>Stock Movement History</h2>
-                <p>Complete record of your inventory changes.</p>
+                <p>View and filter your inventory movement records.</p>
             </div>
 
             <span class="history-count">
-                ${historyList.size()} Records
+                ${historyCount} Records
             </span>
         </div>
 
+        <!-- HISTORY TABLE -->
         <div class="table-wrapper">
 
             <table>
@@ -226,6 +340,8 @@
                             </strong>
                         </td>
 
+
+                        <!-- MOVEMENT BADGE -->
                         <td>
 
                             <c:choose>
@@ -258,12 +374,18 @@
 
                         </td>
 
+
+                        <!-- PREVIOUS STOCK -->
                         <td>
                             <c:out value="${history.previousQuantity}"/>
                         </td>
 
+
+                        <!-- QUANTITY CHANGE -->
                         <td>
+
                             <c:choose>
+
                                 <c:when test="${history.quantityChange > 0}">
                                     <span class="positive-quantity">
                                         +<c:out value="${history.quantityChange}"/>
@@ -279,17 +401,25 @@
                                 <c:otherwise>
                                     <span class="neutral-quantity">0</span>
                                 </c:otherwise>
+
                             </c:choose>
+
                         </td>
 
+
+                        <!-- NEW STOCK -->
                         <td>
                             <strong>
                                 <c:out value="${history.newQuantity}"/>
                             </strong>
                         </td>
 
+
+                        <!-- NOTES -->
                         <td>
+
                             <c:choose>
+
                                 <c:when test="${not empty history.notes}">
                                     <c:out value="${history.notes}"/>
                                 </c:when>
@@ -297,17 +427,21 @@
                                 <c:otherwise>
                                     <span class="muted">No notes</span>
                                 </c:otherwise>
+
                             </c:choose>
+
                         </td>
 
                     </tr>
 
                 </c:forEach>
 
+
+                <!-- EMPTY HISTORY -->
                 <c:if test="${empty historyList}">
                     <tr>
                         <td colspan="8" class="empty-state">
-                            No stock movements recorded yet.
+                            No stock movements found for this period.
                         </td>
                     </tr>
                 </c:if>
@@ -322,8 +456,13 @@
 
 </div>
 
-<!-- MOVEMENT TYPE INFORMATION -->
+
+<!-- JAVASCRIPT -->
 <script>
+
+    /* =====================================
+       MOVEMENT TYPE INFORMATION
+    ===================================== */
 
     const movementType = document.getElementById("movementType");
     const quantityLabel = document.getElementById("quantityLabel");
@@ -374,6 +513,61 @@
             }
         });
     }
+
+
+    /* =====================================
+       STOCK HISTORY DATE FILTER
+    ===================================== */
+
+    const periodSelect = document.getElementById("period");
+
+    const fromDateGroup = document.getElementById("fromDateGroup");
+    const toDateGroup = document.getElementById("toDateGroup");
+
+    const fromDateInput = document.getElementById("fromDate");
+    const toDateInput = document.getElementById("toDate");
+
+    const stockFilterForm = document.getElementById("stockFilterForm");
+
+
+    function toggleCustomDateFields() {
+
+        const isCustom = periodSelect.value === "custom";
+
+        fromDateGroup.style.display = isCustom ? "flex" : "none";
+        toDateGroup.style.display = isCustom ? "flex" : "none";
+
+        fromDateInput.required = isCustom;
+        toDateInput.required = isCustom;
+    }
+
+
+    periodSelect.addEventListener("change", toggleCustomDateFields);
+
+
+    stockFilterForm.addEventListener("submit", function (event) {
+
+        if (periodSelect.value === "custom") {
+
+            if (!fromDateInput.value || !toDateInput.value) {
+
+                event.preventDefault();
+                alert("Please select both From Date and To Date.");
+                return;
+            }
+
+            if (fromDateInput.value > toDateInput.value) {
+
+                event.preventDefault();
+                alert("From Date cannot be after To Date.");
+                return;
+            }
+        }
+
+    });
+
+
+    toggleCustomDateFields();
 
 </script>
 

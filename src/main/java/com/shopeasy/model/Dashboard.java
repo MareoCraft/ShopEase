@@ -6,6 +6,7 @@ import java.util.List;
 public class Dashboard {
 
     private int shopId;
+    private String shopCode;
     private String shopName;
     private String ownerName;
     private int totalUsers;
@@ -30,6 +31,14 @@ public class Dashboard {
 
     public void setShopId(int shopId) {
         this.shopId = shopId;
+    }
+
+    public String getShopCode() {
+        return shopCode;
+    }
+
+    public void setShopCode(String shopCode) {
+        this.shopCode = shopCode;
     }
 
     public String getShopName() {

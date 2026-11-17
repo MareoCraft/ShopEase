@@ -32,7 +32,7 @@ if (request.getAttribute("dashboard") == null) {
     <aside class="sidebar">
 
         <div class="logo">
-            <span>Shop</span>Ease
+             <img width="90%" src="./images/logo.png">
         </div>
 
         <!-- SHOP INFO -->
@@ -165,7 +165,7 @@ if (request.getAttribute("dashboard") == null) {
 
                 <span>
                     Shop ID:
-                    <c:out value="${dashboard.shopId}"/>
+                    <c:out value="${dashboard.shopCode}"/>
                 </span>
             </div>
 
@@ -289,7 +289,7 @@ if (request.getAttribute("dashboard") == null) {
                 <div>
                     <label>Shop ID</label>
                     <strong>
-                        <c:out value="${dashboard.shopId}"/>
+                        <c:out value="${dashboard.shopCode}"/>
                     </strong>
                 </div>
 

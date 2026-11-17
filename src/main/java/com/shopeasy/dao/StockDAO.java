@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.sql.Types;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,6 +21,7 @@ public class StockDAO {
                                        int shopId) throws Exception {
 
         String sql = "SELECT PRODUCT_ID, SHOP_ID, PRODUCT_NAME, SELLING_PRICE, STOCK_QUANTITY, MIN_STOCK_LEVEL, UNIT FROM PRODUCTS WHERE PRODUCT_ID = ? AND SHOP_ID = ? AND STATUS = 'ACTIVE' FOR UPDATE";
+
         try (PreparedStatement ps = con.prepareStatement(sql)) {
 
             ps.setInt(1, productId);
@@ -34,10 +36,8 @@ public class StockDAO {
                     product.setProductId(rs.getInt("PRODUCT_ID"));
                     product.setShopId(rs.getInt("SHOP_ID"));
                     product.setProductName(rs.getString("PRODUCT_NAME"));
-                    product.setStockQuantity(
-                            rs.getDouble("STOCK_QUANTITY"));
-                    product.setMinStockLevel(
-                            rs.getDouble("MIN_STOCK_LEVEL"));
+                    product.setStockQuantity(rs.getDouble("STOCK_QUANTITY"));
+                    product.setMinStockLevel(rs.getDouble("MIN_STOCK_LEVEL"));
                     product.setUnit(rs.getString("UNIT"));
                     product.setSellingPrice(rs.getDouble("SELLING_PRICE"));
 
@@ -53,8 +53,7 @@ public class StockDAO {
     public boolean updateStockQuantity(Connection con,
                                        int productId,
                                        int shopId,
-                                       double newQuantity)
-            throws Exception {
+                                       double newQuantity) throws Exception {
 
         String sql = "UPDATE PRODUCTS SET STOCK_QUANTITY = ?, UPDATED_DATE = SYSDATE WHERE PRODUCT_ID = ? AND SHOP_ID = ? AND STATUS = 'ACTIVE'";
 
@@ -74,8 +73,7 @@ public class StockDAO {
 
         int historyId = 0;
 
-        String sequenceSql =
-                "SELECT STOCK_HISTORY_SEQ.NEXTVAL FROM DUAL";
+        String sequenceSql = "SELECT STOCK_HISTORY_SEQ.NEXTVAL FROM DUAL";
 
         try (Statement stmt = con.createStatement();
              ResultSet rs = stmt.executeQuery(sequenceSql)) {
@@ -110,17 +108,49 @@ public class StockDAO {
         }
     }
 
-    // GET STOCK HISTORY FOR A SHOP
+    // GET ALL STOCK HISTORY FOR A SHOP
     public List<StockHistory> getStockHistoryByShopId(
             Connection con, int shopId) throws Exception {
 
+        return getStockHistoryByShopId(con, shopId, null, null);
+    }
+
+    // GET STOCK HISTORY WITH DATE FILTER
+    public List<StockHistory> getStockHistoryByShopId(
+            Connection con,
+            int shopId,
+            Date fromDate,
+            Date toDate) throws Exception {
+
         List<StockHistory> historyList = new ArrayList<>();
 
-        String sql = "SELECT H.HISTORY_ID, H.SHOP_ID, H.PRODUCT_ID, P.PRODUCT_NAME, H.MOVEMENT_TYPE, H.QUANTITY_CHANGE, H.PREVIOUS_QUANTITY, H.NEW_QUANTITY, H.REFERENCE_TYPE, H.REFERENCE_ID, H.NOTES, H.CREATED_DATE FROM STOCK_HISTORY H INNER JOIN PRODUCTS P ON H.PRODUCT_ID = P.PRODUCT_ID AND H.SHOP_ID = P.SHOP_ID WHERE H.SHOP_ID = ? ORDER BY H.HISTORY_ID DESC";
+        StringBuilder sql = new StringBuilder(
+                "SELECT H.HISTORY_ID, H.SHOP_ID, H.PRODUCT_ID, " +
+                        "P.PRODUCT_NAME, H.MOVEMENT_TYPE, H.QUANTITY_CHANGE, " +
+                        "H.PREVIOUS_QUANTITY, H.NEW_QUANTITY, H.REFERENCE_TYPE, " +
+                        "H.REFERENCE_ID, H.NOTES, H.CREATED_DATE " +
+                        "FROM STOCK_HISTORY H " +
+                        "INNER JOIN PRODUCTS P " +
+                        "ON H.PRODUCT_ID = P.PRODUCT_ID " +
+                        "AND H.SHOP_ID = P.SHOP_ID " +
+                        "WHERE H.SHOP_ID = ? "
+        );
 
-        try (PreparedStatement ps = con.prepareStatement(sql)) {
+        if (fromDate != null && toDate != null) {
+            sql.append("AND H.CREATED_DATE >= ? ");
+            sql.append("AND H.CREATED_DATE < ? + 1 ");
+        }
+
+        sql.append("ORDER BY H.CREATED_DATE DESC, H.HISTORY_ID DESC");
+
+        try (PreparedStatement ps = con.prepareStatement(sql.toString())) {
 
             ps.setInt(1, shopId);
+
+            if (fromDate != null && toDate != null) {
+                ps.setDate(2, fromDate);
+                ps.setDate(3, toDate);
+            }
 
             try (ResultSet rs = ps.executeQuery()) {
 
@@ -131,23 +161,15 @@ public class StockDAO {
                     history.setHistoryId(rs.getInt("HISTORY_ID"));
                     history.setShopId(rs.getInt("SHOP_ID"));
                     history.setProductId(rs.getInt("PRODUCT_ID"));
-                    history.setProductName(
-                            rs.getString("PRODUCT_NAME"));
-                    history.setMovementType(
-                            rs.getString("MOVEMENT_TYPE"));
-                    history.setQuantityChange(
-                            rs.getDouble("QUANTITY_CHANGE"));
-                    history.setPreviousQuantity(
-                            rs.getDouble("PREVIOUS_QUANTITY"));
-                    history.setNewQuantity(
-                            rs.getDouble("NEW_QUANTITY"));
-                    history.setReferenceType(
-                            rs.getString("REFERENCE_TYPE"));
-                    history.setReferenceId(
-                            rs.getInt("REFERENCE_ID"));
+                    history.setProductName(rs.getString("PRODUCT_NAME"));
+                    history.setMovementType(rs.getString("MOVEMENT_TYPE"));
+                    history.setQuantityChange(rs.getDouble("QUANTITY_CHANGE"));
+                    history.setPreviousQuantity(rs.getDouble("PREVIOUS_QUANTITY"));
+                    history.setNewQuantity(rs.getDouble("NEW_QUANTITY"));
+                    history.setReferenceType(rs.getString("REFERENCE_TYPE"));
+                    history.setReferenceId(rs.getInt("REFERENCE_ID"));
                     history.setNotes(rs.getString("NOTES"));
-                    history.setCreatedDate(
-                            rs.getDate("CREATED_DATE"));
+                    history.setCreatedDate(rs.getDate("CREATED_DATE"));
 
                     historyList.add(history);
                 }
