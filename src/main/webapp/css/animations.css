@@ -1,0 +1,87 @@
+/* ==========================================================================
+   ShopEase — animations.css
+   Keyframes, scroll-reveal base state, floating decorations.
+   All motion is disabled for users who prefer reduced motion.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Scroll reveal base state
+   (JS adds .is-in, then removes the attribute so hover transforms work again)
+-------------------------------------------------------------------------- */
+[data-reveal] {
+    opacity: 0;
+    transform: translateY(22px);
+    transition:
+            opacity .7s var(--ease),
+            transform .7s var(--ease);
+    transition-delay: var(--d, 0s);
+}
+
+[data-reveal].is-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --------------------------------------------------------------------------
+   Keyframes
+-------------------------------------------------------------------------- */
+@keyframes floatY {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-11px); }
+}
+
+@keyframes drift {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50%      { transform: translate(22px, -26px) scale(1.07); }
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shimmer {
+    0%   { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+/* --------------------------------------------------------------------------
+   Floating decorations
+-------------------------------------------------------------------------- */
+.orb-1 { animation: drift 20s ease-in-out infinite; }
+.orb-2 { animation: drift 26s ease-in-out infinite reverse; }
+
+.float-card--1 { animation: floatY 7s ease-in-out infinite; }
+.float-card--2 { animation: floatY 8.5s ease-in-out infinite .9s; }
+
+/* Gentle pulse on the primary CTA (very subtle) */
+.btn-primary { will-change: transform; }
+
+/* Tab panel entrance */
+.panel.is-active { animation: fadeUp .45s var(--ease) both; }
+
+/* --------------------------------------------------------------------------
+   Reduced motion
+-------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: .001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .001ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    [data-reveal] {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+
+    .orb-1, .orb-2,
+    .float-card--1, .float-card--2 {
+        animation: none !important;
+    }
+}

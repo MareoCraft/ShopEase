@@ -1,0 +1,1368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>ShopEase — Smart Shop Management. Simple Business Growth.</title>
+    <meta name="description" content="ShopEase is a web-based multi-shop management system that brings products, inventory, sales &amp; billing, customers, Udhar (credit) and business reports into one centralized dashboard." />
+    <meta name="theme-color" content="#2563eb" />
+    <link rel="canonical" href="https://shopease.app/" />
+
+    <!-- Open Graph / Social -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="ShopEase" />
+    <meta property="og:title" content="ShopEase — Smart Shop Management. Simple Business Growth." />
+    <meta property="og:description" content="Manage your shop, inventory, billing, customers and Udhar from one centralized dashboard." />
+    <meta property="og:url" content="https://shopease.app/" />
+    <meta property="og:image" content="assets/images/og-cover.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="ShopEase — Smart Shop Management" />
+    <meta name="twitter:description" content="Manage your shop, inventory, billing, customers and Udhar from one centralized dashboard." />
+    <meta name="twitter:image" content="assets/images/og-cover.png" />
+
+    <link rel="icon" href="assets/logo/favicon.svg" type="image/svg+xml" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="css/animations.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+</head>
+
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<!-- ============================================================
+     SECTION 1 — NAVIGATION
+============================================================= -->
+<header class="nav" id="siteNav">
+    <div class="container nav-inner">
+        <a href="#home" class="brand" aria-label="ShopEase — home">
+            <span class="brand-mark"><i data-lucide="store"></i></span>
+            <span class="brand-name">ShopEase</span>
+        </a>
+
+        <nav class="nav-links" aria-label="Primary navigation">
+            <a href="#home" class="is-active">Home</a>
+            <a href="#features">Features</a>
+            <a href="#services">Services</a>
+            <a href="#how">How It Works</a>
+            <a href="#about">About Us</a>
+            <a href="#contact">Contact</a>
+        </nav>
+
+        <div class="nav-actions">
+            <a href="./login" class="btn btn-ghost" data-app-link="login">Login</a>
+            <a href="./register.jsp" class="btn btn-primary" data-app-link="register">Get Started</a>
+        </div>
+
+        <button class="nav-toggle" id="navToggle" type="button"
+                aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileMenu">
+            <span class="tg-open"><i data-lucide="menu"></i></span>
+            <span class="tg-close"><i data-lucide="x"></i></span>
+        </button>
+    </div>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <nav class="mobile-links" aria-label="Mobile navigation">
+            <a href="#home">Home</a>
+            <a href="#features">Features</a>
+            <a href="#services">Services</a>
+            <a href="#how">How It Works</a>
+            <a href="#about">About Us</a>
+            <a href="#contact">Contact</a>
+        </nav>
+        <div class="mobile-actions">
+            <a href="./login" class="btn btn-outline btn-block" data-app-link="login">Login</a>
+            <a href="./register.jsp" class="btn btn-primary btn-block" data-app-link="register">Get Started</a>
+        </div>
+    </div>
+</header>
+
+<main id="main">
+
+    <!-- ============================================================
+         SECTION 2 — HERO
+    ============================================================= -->
+    <section class="hero" id="home">
+        <div class="hero-bg" aria-hidden="true">
+            <span class="orb orb-1"></span>
+            <span class="orb orb-2"></span>
+            <span class="hero-grid"></span>
+        </div>
+
+        <div class="container hero-inner">
+            <div class="hero-copy" data-reveal>
+                <span class="eyebrow"><i data-lucide="sparkles"></i> Multi-Shop Management System</span>
+
+                <h1>Manage Your Shop.<br /><span class="grad">Grow Your Business.</span></h1>
+
+                <p class="lead">
+                    Everything you need to manage your shop in one place. Track inventory,
+                    create bills, manage customers and monitor your business performance
+                    with ShopEase.
+                </p>
+
+                <div class="hero-cta">
+                    <a href="#" class="btn btn-primary btn-lg" data-app-link="register">
+                        Get Started <i data-lucide="arrow-right"></i>
+                    </a>
+                    <a href="#features" class="btn btn-outline btn-lg">Explore Features</a>
+                </div>
+
+                <ul class="hero-points">
+                    <li><i data-lucide="circle-check"></i> One centralized dashboard</li>
+                    <li><i data-lucide="circle-check"></i> Built for daily shop operations</li>
+                    <li><i data-lucide="circle-check"></i> Runs in your browser</li>
+                </ul>
+            </div>
+
+            <div class="hero-visual" data-reveal style="--d:.12s">
+                <div class="mockup">
+
+                    <div class="mockup-window">
+                        <div class="mockup-bar">
+                            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+                            <span class="mockup-url">app.shopease.com/dashboard</span>
+                        </div>
+
+                        <div class="mockup-body">
+                            <div class="mk-head">
+                                <div>
+                                    <p class="mk-hi">Business Overview</p>
+                                    <h3 class="mk-title">Dashboard</h3>
+                                </div>
+                                <span class="mk-pill"><i data-lucide="calendar"></i> Today</span>
+                            </div>
+
+                            <div class="mk-stats">
+                                <div class="mk-stat">
+                                    <span class="mk-stat-label"><i data-lucide="indian-rupee"></i> Sales</span>
+                                    <strong>₹24,850</strong>
+                                    <span class="mk-trend mk-trend--up"><i data-lucide="trending-up"></i> 12.4%</span>
+                                </div>
+                                <div class="mk-stat">
+                                    <span class="mk-stat-label"><i data-lucide="package"></i> Products</span>
+                                    <strong>1,248</strong>
+                                    <span class="mk-trend">In stock</span>
+                                </div>
+                                <div class="mk-stat">
+                                    <span class="mk-stat-label"><i data-lucide="users"></i> Customers</span>
+                                    <strong>386</strong>
+                                    <span class="mk-trend">Registered</span>
+                                </div>
+                                <div class="mk-stat">
+                                    <span class="mk-stat-label"><i data-lucide="wallet"></i> Pending Udhar</span>
+                                    <strong>₹18,420</strong>
+                                    <span class="mk-trend mk-trend--warn">12 open</span>
+                                </div>
+                            </div>
+
+                            <div class="mk-mid">
+                                <div class="mk-card">
+                                    <h4>Sales This Week</h4>
+                                    <svg class="mk-chart-svg" viewBox="0 0 300 96" preserveAspectRatio="none"
+                                         role="img" aria-label="Weekly sales trend">
+                                        <defs>
+                                            <linearGradient id="areaFill" x1="0" y1="0" x2="0" y2="1">
+                                                <stop offset="0%" stop-color="#2563eb" stop-opacity=".28" />
+                                                <stop offset="100%" stop-color="#2563eb" stop-opacity="0" />
+                                            </linearGradient>
+                                        </defs>
+                                        <path d="M0,74 C26,68 42,52 68,56 C94,60 108,34 138,38 C168,42 182,20 212,26 C242,32 262,12 300,8 L300,96 L0,96 Z" fill="url(#areaFill)" />
+                                        <path d="M0,74 C26,68 42,52 68,56 C94,60 108,34 138,38 C168,42 182,20 212,26 C242,32 262,12 300,8"
+                                              fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round"
+                                              vector-effect="non-scaling-stroke" />
+                                    </svg>
+                                    <div class="mk-chart-x">
+                                        <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span>
+                                        <span>Fri</span><span>Sat</span><span>Sun</span>
+                                    </div>
+                                </div>
+
+                                <div class="mk-card">
+                                    <h4>Low Stock</h4>
+                                    <ul class="mk-low">
+                                        <li><span>Amul Butter 500g</span><b>3 left</b></li>
+                                        <li><span>Cotton Shirt (M)</span><b>5 left</b></li>
+                                        <li><span>USB-C Cable 1m</span><b>2 left</b></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="mk-card">
+                                <h4>Recent Transactions</h4>
+                                <ul class="mk-tx">
+                                    <li>
+                                        <span class="mk-tx-ic"><i data-lucide="receipt"></i></span>
+                                        <span class="mk-tx-name">INV-2043 · Walk-in customer</span>
+                                        <b>₹1,240</b>
+                                    </li>
+                                    <li>
+                                        <span class="mk-tx-ic"><i data-lucide="receipt"></i></span>
+                                        <span class="mk-tx-name">INV-2042 · Anil Kumar</span>
+                                        <b>₹860</b>
+                                    </li>
+                                    <li>
+                                        <span class="mk-tx-ic"><i data-lucide="hand-coins"></i></span>
+                                        <span class="mk-tx-name">Udhar collection · Priya S.</span>
+                                        <b>₹2,000</b>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="float-card float-card--1">
+                        <span class="fc-ic fc-ic--green"><i data-lucide="circle-check"></i></span>
+                        <div><b>Bill generated</b><small>INV-2044 · ₹1,860</small></div>
+                    </div>
+
+                    <div class="float-card float-card--2">
+                        <span class="fc-ic fc-ic--amber"><i data-lucide="triangle-alert"></i></span>
+                        <div><b>Low stock alert</b><small>3 products need restocking</small></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 3 — TRUSTED BUSINESS SOLUTION
+    ============================================================= -->
+    <section class="section section--tight" id="about">
+        <div class="container">
+            <div class="trust-card" data-reveal>
+                <div class="trust-copy">
+                    <span class="eyebrow"><i data-lucide="shield-check"></i> Trusted Business Solution</span>
+                    <h2>Designed to make everyday shop management smarter, faster and easier.</h2>
+                    <p>
+                        ShopEase brings your products, inventory, billing, customers and credit
+                        records together in one organized workspace — so you spend less time on
+                        paperwork and more time growing your business.
+                    </p>
+                </div>
+
+                <ul class="trust-list" data-stagger>
+                    <li>
+                        <span class="ti"><i data-lucide="sliders-horizontal"></i></span>
+                        <div>
+                            <b>Simple management</b>
+                            <p>Clean, straightforward screens for daily shop tasks.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="ti"><i data-lucide="layout-dashboard"></i></span>
+                        <div>
+                            <b>Centralized operations</b>
+                            <p>Everything accessible from a single dashboard.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="ti"><i data-lucide="folder-check"></i></span>
+                        <div>
+                            <b>Organized business records</b>
+                            <p>Products, bills and customers stored in one place.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="ti"><i data-lucide="chart-line"></i></span>
+                        <div>
+                            <b>Better business visibility</b>
+                            <p>Clear reports on sales, stock and pending credit.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 4 — PROBLEMS WE SOLVE
+    ============================================================= -->
+    <section class="section" id="problems">
+        <div class="container">
+            <div class="sec-head" data-reveal>
+                <span class="eyebrow"><i data-lucide="circle-alert"></i> Problems We Solve</span>
+                <h2>Still Managing Your Shop Manually?</h2>
+                <p>
+                    Notebooks and spreadsheets leave gaps in your records. ShopEase closes
+                    those gaps with a single, organized system.
+                </p>
+            </div>
+
+            <div class="grid grid--3" data-stagger>
+                <article class="card problem-card">
+                    <span class="card-ic card-ic--blue"><i data-lucide="boxes"></i></span>
+                    <h3>Difficult stock tracking</h3>
+                    <p>Stock moves with every sale. ShopEase keeps product quantities in one place so you can see what is available and what needs restocking.</p>
+                </article>
+
+                <article class="card problem-card">
+                    <span class="card-ic card-ic--violet"><i data-lucide="calculator"></i></span>
+                    <h3>Manual billing and calculations</h3>
+                    <p>Building bills by hand is slow and error-prone. Create bills from your product list with automatic totals and discounts applied.</p>
+                </article>
+
+                <article class="card problem-card">
+                    <span class="card-ic card-ic--teal"><i data-lucide="folder-check"></i></span>
+                    <h3>Unorganized customer records</h3>
+                    <p>Customer details written across different registers are hard to find. Keep every customer profile in one searchable list.</p>
+                </article>
+
+                <article class="card problem-card">
+                    <span class="card-ic card-ic--amber"><i data-lucide="hand-coins"></i></span>
+                    <h3>Forgotten credit payments</h3>
+                    <p>Udhar recorded on paper is easy to lose track of. ShopEase records outstanding balances and every payment collected against them.</p>
+                </article>
+
+                <article class="card problem-card">
+                    <span class="card-ic card-ic--indigo"><i data-lucide="chart-line"></i></span>
+                    <h3>Difficult sales tracking</h3>
+                    <p>Without a daily record it is hard to know how the shop is performing. View sales summaries by date and by payment method.</p>
+                </article>
+
+                <article class="card problem-card">
+                    <span class="card-ic card-ic--rose"><i data-lucide="eye-off"></i></span>
+                    <h3>No clear business overview</h3>
+                    <p>Scattered records make it difficult to see the full picture. The dashboard brings sales, stock, customers and credit together.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 5 — CORE FEATURES
+    ============================================================= -->
+    <section class="section section--tint" id="features">
+        <div class="container">
+            <div class="sec-head" data-reveal>
+                <span class="eyebrow"><i data-lucide="layout-grid"></i> Core Features</span>
+                <h2>Everything Your Shop Needs. One Platform.</h2>
+                <p>
+                    Seven connected modules that cover the day-to-day operations of a retail
+                    shop — from registration to reporting.
+                </p>
+            </div>
+
+            <div class="grid grid--3" data-stagger>
+                <article class="card feature-card">
+                    <span class="card-ic"><i data-lucide="user-plus"></i></span>
+                    <h3>Shop Registration &amp; Authentication</h3>
+                    <ul class="tick-list">
+                        <li>Secure shop registration</li>
+                        <li>User login and logout</li>
+                        <li>Shop-specific account access</li>
+                    </ul>
+                </article>
+
+                <article class="card feature-card">
+                    <span class="card-ic"><i data-lucide="layout-dashboard"></i></span>
+                    <h3>Dashboard</h3>
+                    <ul class="tick-list">
+                        <li>Business overview at a glance</li>
+                        <li>Daily sales summary</li>
+                        <li>Product and customer statistics</li>
+                        <li>Pending Udhar overview</li>
+                        <li>Low-stock information</li>
+                    </ul>
+                </article>
+
+                <article class="card feature-card">
+                    <span class="card-ic"><i data-lucide="package"></i></span>
+                    <h3>Product &amp; Inventory Management</h3>
+                    <ul class="tick-list">
+                        <li>Add and manage products</li>
+                        <li>Organize product categories</li>
+                        <li>Manage product prices</li>
+                        <li>Track stock quantities</li>
+                        <li>Stock adjustment history</li>
+                        <li>Low-stock monitoring</li>
+                    </ul>
+                </article>
+
+                <article class="card feature-card">
+                    <span class="card-ic"><i data-lucide="receipt"></i></span>
+                    <h3>Sales &amp; Billing</h3>
+                    <ul class="tick-list">
+                        <li>Create customer bills</li>
+                        <li>Add multiple products per bill</li>
+                        <li>Automatic bill calculations</li>
+                        <li>Discount management</li>
+                        <li>Multiple payment methods</li>
+                        <li>Invoice generation</li>
+                    </ul>
+                </article>
+
+                <article class="card feature-card">
+                    <span class="card-ic"><i data-lucide="users"></i></span>
+                    <h3>Customer Management</h3>
+                    <ul class="tick-list">
+                        <li>Register customers</li>
+                        <li>Maintain customer information</li>
+                        <li>Search customers instantly</li>
+                        <li>View pending credit balances</li>
+                    </ul>
+                </article>
+
+                <article class="card feature-card">
+                    <span class="card-ic"><i data-lucide="wallet"></i></span>
+                    <h3>Udhar / Credit Management</h3>
+                    <ul class="tick-list">
+                        <li>Track outstanding payments</li>
+                        <li>Collect customer payments</li>
+                        <li>Record collection methods</li>
+                        <li>Monitor remaining balances</li>
+                    </ul>
+                </article>
+
+                <article class="card feature-card card--wide">
+                    <div class="feature-wide-copy">
+                        <span class="card-ic"><i data-lucide="chart-column"></i></span>
+                        <h3>Reports &amp; Analytics</h3>
+                        <ul class="tick-list tick-list--inline">
+                            <li>Sales summaries</li>
+                            <li>Date-wise reports</li>
+                            <li>Payment method summaries</li>
+                            <li>Best-selling products</li>
+                            <li>Business performance insights</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-wide-visual" aria-hidden="true">
+                        <div class="ui-bars ui-bars--tall">
+                            <span style="--h:38%"></span>
+                            <span style="--h:62%"></span>
+                            <span style="--h:48%"></span>
+                            <span style="--h:82%"></span>
+                            <span style="--h:56%"></span>
+                            <span style="--h:94%"></span>
+                            <span style="--h:70%"></span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 6 — PRODUCT SHOWCASE
+    ============================================================= -->
+    <section class="section" id="showcase">
+        <div class="container">
+            <div class="sec-head" data-reveal>
+                <span class="eyebrow"><i data-lucide="monitor-smartphone"></i> Product Showcase</span>
+                <h2>Experience ShopEase in Action</h2>
+                <p>Explore the screens you will use every day. Select a module to preview it.</p>
+            </div>
+
+            <div class="showcase" data-reveal>
+                <div class="tabs" role="tablist" aria-label="ShopEase product screens">
+                    <button class="tab is-active" role="tab" type="button" id="tab-dashboard"
+                            aria-selected="true" aria-controls="panel-dashboard" data-tab="dashboard">
+                        <i data-lucide="layout-dashboard"></i> Dashboard
+                    </button>
+                    <button class="tab" role="tab" type="button" id="tab-products"
+                            aria-selected="false" aria-controls="panel-products" data-tab="products" tabindex="-1">
+                        <i data-lucide="package"></i> Products
+                    </button>
+                    <button class="tab" role="tab" type="button" id="tab-billing"
+                            aria-selected="false" aria-controls="panel-billing" data-tab="billing" tabindex="-1">
+                        <i data-lucide="receipt"></i> Billing
+                    </button>
+                    <button class="tab" role="tab" type="button" id="tab-customers"
+                            aria-selected="false" aria-controls="panel-customers" data-tab="customers" tabindex="-1">
+                        <i data-lucide="users"></i> Customers
+                    </button>
+                    <button class="tab" role="tab" type="button" id="tab-udhar"
+                            aria-selected="false" aria-controls="panel-udhar" data-tab="udhar" tabindex="-1">
+                        <i data-lucide="wallet"></i> Udhar
+                    </button>
+                    <button class="tab" role="tab" type="button" id="tab-reports"
+                            aria-selected="false" aria-controls="panel-reports" data-tab="reports" tabindex="-1">
+                        <i data-lucide="chart-column"></i> Reports
+                    </button>
+                </div>
+
+                <div class="panel-wrap">
+
+                    <!-- Dashboard -->
+                    <div class="panel is-active" id="panel-dashboard" role="tabpanel" aria-labelledby="tab-dashboard">
+                        <div class="app-frame">
+                            <div class="app-bar">
+                                <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+                                <span class="app-url">app.shopease.com/dashboard</span>
+                            </div>
+                            <div class="app-body">
+                                <div class="ui-tiles">
+                                    <div class="ui-tile"><span>Sales Today</span><b>₹24,850</b></div>
+                                    <div class="ui-tile"><span>Bills Created</span><b>42</b></div>
+                                    <div class="ui-tile"><span>Products</span><b>1,248</b></div>
+                                    <div class="ui-tile"><span>Pending Udhar</span><b>₹18,420</b></div>
+                                </div>
+
+                                <div class="ui-split">
+                                    <div class="ui-card">
+                                        <h5>Weekly Sales</h5>
+                                        <div class="ui-bars">
+                                            <span style="--h:42%"></span>
+                                            <span style="--h:66%"></span>
+                                            <span style="--h:50%"></span>
+                                            <span style="--h:84%"></span>
+                                            <span style="--h:58%"></span>
+                                            <span style="--h:96%"></span>
+                                            <span style="--h:72%"></span>
+                                        </div>
+                                    </div>
+                                    <div class="ui-card">
+                                        <h5>Low Stock Alerts</h5>
+                                        <ul class="ui-list">
+                                            <li><span>Amul Butter 500g</span><em class="badge badge--warn">3 left</em></li>
+                                            <li><span>Cotton Shirt (M)</span><em class="badge badge--warn">5 left</em></li>
+                                            <li><span>USB-C Cable 1m</span><em class="badge badge--warn">2 left</em></li>
+                                            <li><span>Basmati Rice 5kg</span><em class="badge badge--ok">18 left</em></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Products -->
+                    <div class="panel" id="panel-products" role="tabpanel" aria-labelledby="tab-products" hidden>
+                        <div class="app-frame">
+                            <div class="app-bar">
+                                <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+                                <span class="app-url">app.shopease.com/products</span>
+                            </div>
+                            <div class="app-body">
+                                <div class="ui-card">
+                                    <div class="ui-card-head">
+                                        <h5>All Products</h5>
+                                        <span class="ui-search"><i data-lucide="search"></i> Search products</span>
+                                    </div>
+                                    <div class="ui-table">
+                                        <div class="ui-tr ui-th ui-tr--4">
+                                            <span>Product</span><span>Category</span><span>Price</span><span>Stock</span>
+                                        </div>
+                                        <div class="ui-tr ui-tr--4">
+                                            <span>Aashirvaad Atta 5kg</span><span>Grocery</span><span>₹245</span>
+                                            <span><em class="badge badge--ok">48</em></span>
+                                        </div>
+                                        <div class="ui-tr ui-tr--4">
+                                            <span>Amul Butter 500g</span><span>Dairy</span><span>₹285</span>
+                                            <span><em class="badge badge--warn">3</em></span>
+                                        </div>
+                                        <div class="ui-tr ui-tr--4">
+                                            <span>Cotton Shirt (M)</span><span>Clothing</span><span>₹899</span>
+                                            <span><em class="badge badge--warn">5</em></span>
+                                        </div>
+                                        <div class="ui-tr ui-tr--4">
+                                            <span>USB-C Cable 1m</span><span>Electronics</span><span>₹199</span>
+                                            <span><em class="badge badge--warn">2</em></span>
+                                        </div>
+                                        <div class="ui-tr ui-tr--4">
+                                            <span>Basmati Rice 5kg</span><span>Grocery</span><span>₹640</span>
+                                            <span><em class="badge badge--ok">18</em></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Billing -->
+                    <div class="panel" id="panel-billing" role="tabpanel" aria-labelledby="tab-billing" hidden>
+                        <div class="app-frame">
+                            <div class="app-bar">
+                                <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+                                <span class="app-url">app.shopease.com/billing</span>
+                            </div>
+                            <div class="app-body">
+                                <div class="ui-split ui-split--billing">
+                                    <div class="ui-card">
+                                        <h5>New Bill · INV-2044</h5>
+                                        <div class="ui-tr ui-th ui-tr--3"><span>Item</span><span>Qty</span><span>Amount</span></div>
+                                        <div class="ui-tr ui-tr--3"><span>Aashirvaad Atta 5kg</span><span>2</span><span>₹490</span></div>
+                                        <div class="ui-tr ui-tr--3"><span>Basmati Rice 5kg</span><span>1</span><span>₹640</span></div>
+                                        <div class="ui-tr ui-tr--3"><span>Amul Butter 500g</span><span>2</span><span>₹570</span></div>
+                                        <div class="ui-total"><span>Total payable</span><b>₹1,860</b></div>
+                                    </div>
+
+                                    <div class="ui-card">
+                                        <h5>Payment</h5>
+                                        <div class="ui-chips">
+                                            <span class="chip is-on">Cash</span>
+                                            <span class="chip">UPI</span>
+                                            <span class="chip">Card</span>
+                                        </div>
+                                        <ul class="ui-list ui-list--plain">
+                                            <li><span>Subtotal</span><em>₹1,900</em></li>
+                                            <li><span>Discount</span><em>− ₹40</em></li>
+                                            <li><span>Payment status</span><em class="badge badge--ok">Paid</em></li>
+                                        </ul>
+                                        <span class="btn btn-primary btn-block btn-sm">Generate Invoice</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Customers -->
+                    <div class="panel" id="panel-customers" role="tabpanel" aria-labelledby="tab-customers" hidden>
+                        <div class="app-frame">
+                            <div class="app-bar">
+                                <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+                                <span class="app-url">app.shopease.com/customers</span>
+                            </div>
+                            <div class="app-body">
+                                <div class="ui-card">
+                                    <div class="ui-card-head">
+                                        <h5>Customers</h5>
+                                        <span class="ui-search"><i data-lucide="search"></i> Search customers</span>
+                                    </div>
+                                    <div class="ui-table">
+                                        <div class="ui-tr ui-th ui-tr--3"><span>Customer</span><span>Phone</span><span>Pending Udhar</span></div>
+                                        <div class="ui-tr ui-tr--3"><span>Anil Kumar</span><span>••••• 42180</span><span><em class="badge badge--warn">₹2,450</em></span></div>
+                                        <div class="ui-tr ui-tr--3"><span>Priya Sharma</span><span>••••• 77834</span><span><em class="badge badge--ok">₹0</em></span></div>
+                                        <div class="ui-tr ui-tr--3"><span>Rohit Verma</span><span>••••• 10392</span><span><em class="badge badge--warn">₹1,180</em></span></div>
+                                        <div class="ui-tr ui-tr--3"><span>Meena Patel</span><span>••••• 55201</span><span><em class="badge badge--warn">₹3,600</em></span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Udhar -->
+                    <div class="panel" id="panel-udhar" role="tabpanel" aria-labelledby="tab-udhar" hidden>
+                        <div class="app-frame">
+                            <div class="app-bar">
+                                <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+                                <span class="app-url">app.shopease.com/udhar</span>
+                            </div>
+                            <div class="app-body">
+                                <div class="ui-tiles ui-tiles--3">
+                                    <div class="ui-tile"><span>Total Outstanding</span><b>₹18,420</b></div>
+                                    <div class="ui-tile"><span>Open Accounts</span><b>12</b></div>
+                                    <div class="ui-tile"><span>Collected Today</span><b>₹2,000</b></div>
+                                </div>
+
+                                <div class="ui-card">
+                                    <h5>Outstanding Balances</h5>
+                                    <ul class="ui-list">
+                                        <li><span>Meena Patel</span><em class="badge badge--warn">₹3,600</em></li>
+                                        <li><span>Anil Kumar</span><em class="badge badge--warn">₹2,450</em></li>
+                                        <li><span>Rohit Verma</span><em class="badge badge--warn">₹1,180</em></li>
+                                        <li><span>Sunita Devi</span><em class="badge badge--warn">₹940</em></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Reports -->
+                    <div class="panel" id="panel-reports" role="tabpanel" aria-labelledby="tab-reports" hidden>
+                        <div class="app-frame">
+                            <div class="app-bar">
+                                <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+                                <span class="app-url">app.shopease.com/reports</span>
+                            </div>
+                            <div class="app-body">
+                                <div class="ui-split">
+                                    <div class="ui-card">
+                                        <h5>Sales · Last 7 Days</h5>
+                                        <div class="ui-bars">
+                                            <span style="--h:38%"></span>
+                                            <span style="--h:60%"></span>
+                                            <span style="--h:46%"></span>
+                                            <span style="--h:78%"></span>
+                                            <span style="--h:52%"></span>
+                                            <span style="--h:92%"></span>
+                                            <span style="--h:68%"></span>
+                                        </div>
+                                    </div>
+                                    <div class="ui-card">
+                                        <h5>Summary</h5>
+                                        <ul class="ui-list ui-list--plain">
+                                            <li><span>Total sales</span><em>₹1,42,860</em></li>
+                                            <li><span>Cash payments</span><em>₹86,400</em></li>
+                                            <li><span>UPI payments</span><em>₹41,260</em></li>
+                                            <li><span>Card payments</span><em>₹15,200</em></li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="ui-card">
+                                    <h5>Best-Selling Products</h5>
+                                    <ul class="ui-list">
+                                        <li><span>Aashirvaad Atta 5kg</span><em>128 units</em></li>
+                                        <li><span>Basmati Rice 5kg</span><em>96 units</em></li>
+                                        <li><span>Amul Butter 500g</span><em>74 units</em></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 7 — HOW IT WORKS
+    ============================================================= -->
+    <section class="section section--tint" id="how">
+        <div class="container">
+            <div class="sec-head" data-reveal>
+                <span class="eyebrow"><i data-lucide="route"></i> How It Works</span>
+                <h2>Get Started in Just a Few Steps</h2>
+                <p>From creating your account to monitoring performance — the whole setup takes minutes.</p>
+            </div>
+
+            <ol class="steps" data-stagger>
+                <li class="step">
+                    <span class="step-num">01</span>
+                    <h3>Register Your Shop</h3>
+                    <p>Create your ShopEase account and set up a secure, shop-specific workspace.</p>
+                </li>
+                <li class="step">
+                    <span class="step-num">02</span>
+                    <h3>Set Up Your Products</h3>
+                    <p>Add categories, products, prices and stock details to your catalogue.</p>
+                </li>
+                <li class="step">
+                    <span class="step-num">03</span>
+                    <h3>Manage Daily Operations</h3>
+                    <p>Create bills, register customers and keep your inventory up to date.</p>
+                </li>
+                <li class="step">
+                    <span class="step-num">04</span>
+                    <h3>Monitor Your Business</h3>
+                    <p>Review reports and keep track of outstanding customer payments.</p>
+                </li>
+            </ol>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 8 — BENEFITS
+    ============================================================= -->
+    <section class="section" id="services">
+        <div class="container">
+            <div class="sec-head" data-reveal>
+                <span class="eyebrow"><i data-lucide="zap"></i> Benefits</span>
+                <h2>A Smarter Way to Run Your Shop</h2>
+                <p>Practical improvements to the tasks you handle every single day.</p>
+            </div>
+
+            <div class="grid grid--3" data-stagger>
+                <article class="card benefit-card">
+                    <span class="card-ic"><i data-lucide="clock"></i></span>
+                    <h3>Save time on daily operations</h3>
+                    <p>Handle billing, stock and customer records from one dashboard instead of switching between registers.</p>
+                </article>
+                <article class="card benefit-card">
+                    <span class="card-ic"><i data-lucide="calculator"></i></span>
+                    <h3>Reduce manual calculations</h3>
+                    <p>Bill totals and discounts are calculated for you, reducing avoidable errors at the counter.</p>
+                </article>
+                <article class="card benefit-card">
+                    <span class="card-ic"><i data-lucide="folder-check"></i></span>
+                    <h3>Keep business records organized</h3>
+                    <p>Products, bills and customers are stored in a structured system you can search any time.</p>
+                </article>
+                <article class="card benefit-card">
+                    <span class="card-ic"><i data-lucide="boxes"></i></span>
+                    <h3>Monitor stock efficiently</h3>
+                    <p>Review quantities, adjust stock with a recorded history and spot low-stock items early.</p>
+                </article>
+                <article class="card benefit-card">
+                    <span class="card-ic"><i data-lucide="hand-coins"></i></span>
+                    <h3>Manage customer credit</h3>
+                    <p>Track Udhar balances, record collections and see exactly what remains outstanding.</p>
+                </article>
+                <article class="card benefit-card">
+                    <span class="card-ic"><i data-lucide="chart-column"></i></span>
+                    <h3>Understand business performance</h3>
+                    <p>Use sales summaries and product reports to see what is selling and how your shop is doing.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 9 — WHO CAN USE SHOPEASE
+    ============================================================= -->
+    <section class="section section--tint" id="audience">
+        <div class="container">
+            <div class="sec-head" data-reveal>
+                <span class="eyebrow"><i data-lucide="store"></i> Who Can Use ShopEase</span>
+                <h2>Built for Every Kind of Retail Shop</h2>
+                <p>Wherever you sell products and keep records, ShopEase fits the way you work.</p>
+            </div>
+
+            <div class="grid grid--3 grid--audience" data-stagger>
+                <article class="card audience-card">
+                    <span class="card-ic card-ic--green"><i data-lucide="shopping-basket"></i></span>
+                    <h3>Grocery Stores</h3>
+                    <p>Manage large product lists, daily billing and fast-moving stock.</p>
+                </article>
+                <article class="card audience-card">
+                    <span class="card-ic card-ic--blue"><i data-lucide="store"></i></span>
+                    <h3>General Stores</h3>
+                    <p>Keep mixed categories organized with a single product catalogue.</p>
+                </article>
+                <article class="card audience-card">
+                    <span class="card-ic card-ic--violet"><i data-lucide="smartphone"></i></span>
+                    <h3>Mobile Shops</h3>
+                    <p>Track models, accessories and accessories-level stock quantities.</p>
+                </article>
+                <article class="card audience-card">
+                    <span class="card-ic card-ic--indigo"><i data-lucide="laptop"></i></span>
+                    <h3>Electronics Shops</h3>
+                    <p>Manage higher-value items with clear pricing and stock records.</p>
+                </article>
+                <article class="card audience-card">
+                    <span class="card-ic card-ic--rose"><i data-lucide="shirt"></i></span>
+                    <h3>Clothing Stores</h3>
+                    <p>Organize products by category and keep track of every size.</p>
+                </article>
+                <article class="card audience-card">
+                    <span class="card-ic card-ic--amber"><i data-lucide="briefcase"></i></span>
+                    <h3>Retail Businesses</h3>
+                    <p>Bring billing, customers and reporting into one consistent system.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 10 — WHY CHOOSE SHOPEASE
+    ============================================================= -->
+    <section class="section" id="why">
+        <div class="container">
+            <div class="sec-head" data-reveal>
+                <span class="eyebrow"><i data-lucide="scale"></i> Why Choose ShopEase</span>
+                <h2>Manual Records vs. a Centralized System</h2>
+                <p>A side-by-side look at how digital shop management changes the everyday routine.</p>
+            </div>
+
+            <div class="compare" data-reveal>
+                <div class="compare-head">
+                    <span class="compare-label">Area</span>
+                    <span>Manual record keeping</span>
+                    <span class="is-brand">With ShopEase</span>
+                </div>
+
+                <div class="compare-row">
+                    <span class="compare-label">Organized information</span>
+                    <span class="compare-cell">Details spread across notebooks and loose bills</span>
+                    <span class="compare-cell is-brand"><i data-lucide="circle-check"></i> Products, bills and customers in one place</span>
+                </div>
+
+                <div class="compare-row">
+                    <span class="compare-label">Billing workflow</span>
+                    <span class="compare-cell">Every bill calculated by hand</span>
+                    <span class="compare-cell is-brand"><i data-lucide="circle-check"></i> Bills built from your product list with automatic totals</span>
+                </div>
+
+                <div class="compare-row">
+                    <span class="compare-label">Inventory monitoring</span>
+                    <span class="compare-cell">Stock counted manually and often out of date</span>
+                    <span class="compare-cell is-brand"><i data-lucide="circle-check"></i> Quantities you can review and adjust from one screen</span>
+                </div>
+
+                <div class="compare-row">
+                    <span class="compare-label">Customer records</span>
+                    <span class="compare-cell">Customer details noted in different registers</span>
+                    <span class="compare-cell is-brand"><i data-lucide="circle-check"></i> Searchable customer profiles with credit balances</span>
+                </div>
+
+                <div class="compare-row">
+                    <span class="compare-label">Business reporting</span>
+                    <span class="compare-cell">Reports compiled manually at month end</span>
+                    <span class="compare-cell is-brand"><i data-lucide="circle-check"></i> Sales and payment summaries available on demand</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 11 — FAQ
+    ============================================================= -->
+    <section class="section section--tint" id="faq">
+        <div class="container">
+            <div class="sec-head" data-reveal>
+                <span class="eyebrow"><i data-lucide="message-circle-question"></i> FAQ</span>
+                <h2>Frequently Asked Questions</h2>
+                <p>Clear answers about what ShopEase does and how to get started.</p>
+            </div>
+
+            <div class="faq" data-reveal>
+                <div class="faq-item">
+                    <button class="faq-q" type="button" id="faq-q-1" aria-expanded="false" aria-controls="faq-a-1">
+                        <span>What is ShopEase?</span>
+                        <i data-lucide="chevron-down"></i>
+                    </button>
+                    <div class="faq-a" id="faq-a-1" role="region" aria-labelledby="faq-q-1">
+                        <p>ShopEase is a web-based multi-shop management system. It brings product management, inventory tracking, sales and billing, customer records, Udhar (credit) management and business reporting together in a single dashboard.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-q" type="button" id="faq-q-2" aria-expanded="false" aria-controls="faq-a-2">
+                        <span>Who can use ShopEase?</span>
+                        <i data-lucide="chevron-down"></i>
+                    </button>
+                    <div class="faq-a" id="faq-a-2" role="region" aria-labelledby="faq-q-2">
+                        <p>ShopEase is designed for retail shop owners and small to medium businesses — including grocery and general stores, mobile and electronics shops, clothing and fashion stores, and other local retailers.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-q" type="button" id="faq-q-3" aria-expanded="false" aria-controls="faq-a-3">
+                        <span>Can I manage multiple products?</span>
+                        <i data-lucide="chevron-down"></i>
+                    </button>
+                    <div class="faq-a" id="faq-a-3" role="region" aria-labelledby="faq-q-3">
+                        <p>Yes. You can add and organize products by category, manage prices, track stock quantities, review stock adjustment history and monitor low-stock items.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-q" type="button" id="faq-q-4" aria-expanded="false" aria-controls="faq-a-4">
+                        <span>Can I generate customer bills?</span>
+                        <i data-lucide="chevron-down"></i>
+                    </button>
+                    <div class="faq-a" id="faq-a-4" role="region" aria-labelledby="faq-q-4">
+                        <p>Yes. You can create bills with multiple products, apply discounts, choose from multiple payment methods and generate an invoice — totals are calculated automatically.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-q" type="button" id="faq-q-5" aria-expanded="false" aria-controls="faq-a-5">
+                        <span>Can I track customer Udhar?</span>
+                        <i data-lucide="chevron-down"></i>
+                    </button>
+                    <div class="faq-a" id="faq-a-5" role="region" aria-labelledby="faq-q-5">
+                        <p>Yes. ShopEase tracks outstanding payments, lets you record collections along with the collection method, and shows the remaining balance for each customer.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-q" type="button" id="faq-q-6" aria-expanded="false" aria-controls="faq-a-6">
+                        <span>Can I manage my shop inventory?</span>
+                        <i data-lucide="chevron-down"></i>
+                    </button>
+                    <div class="faq-a" id="faq-a-6" role="region" aria-labelledby="faq-q-6">
+                        <p>Yes. Inventory management covers product categories, prices, stock quantities, stock adjustments with history, and low-stock monitoring so you know what needs restocking.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-q" type="button" id="faq-q-7" aria-expanded="false" aria-controls="faq-a-7">
+                        <span>Does ShopEase provide business reports?</span>
+                        <i data-lucide="chevron-down"></i>
+                    </button>
+                    <div class="faq-a" id="faq-a-7" role="region" aria-labelledby="faq-q-7">
+                        <p>Yes. Reports include sales summaries, date-wise reports, payment method summaries, best-selling products and business performance insights.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-q" type="button" id="faq-q-8" aria-expanded="false" aria-controls="faq-a-8">
+                        <span>How can I get started?</span>
+                        <i data-lucide="chevron-down"></i>
+                    </button>
+                    <div class="faq-a" id="faq-a-8" role="region" aria-labelledby="faq-q-8">
+                        <p>Register your shop to create your ShopEase account, add your categories, products and stock details, then start creating bills and managing customers from your dashboard.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 12 — FINAL CTA
+    ============================================================= -->
+    <section class="section" id="contact">
+        <div class="container">
+            <div class="cta" data-reveal>
+                <div class="cta-glow" aria-hidden="true"></div>
+                <div class="cta-inner">
+                    <h2>Your Shop Deserves Smarter Management.</h2>
+                    <p>
+                        Take control of your daily shop operations with ShopEase. Simplify
+                        management and focus on growing your business.
+                    </p>
+                    <div class="cta-actions">
+                        <a href="./register.jsp" class="btn btn-light btn-lg" data-app-link="register">
+                            Get Started <i data-lucide="arrow-right"></i>
+                        </a>
+                        <a href="./login" class="btn btn-glass btn-lg" data-app-link="login">Login to ShopEase</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<!-- ============================================================
+     SECTION 13 — FOOTER
+============================================================= -->
+<footer class="footer">
+    <div class="container footer-grid">
+        <div class="footer-brand">
+            <a href="#home" class="brand" aria-label="ShopEase — home">
+                <span class="brand-mark"><i data-lucide="store"></i></span>
+                <span class="brand-name">ShopEase</span>
+            </a>
+            <p>
+                A multi-shop management system for retail businesses. Manage products,
+                inventory, billing, customers, Udhar and reports from one centralized
+                dashboard.
+            </p>
+        </div>
+
+        <div class="footer-col">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <h4>Solutions</h4>
+            <ul>
+                <li><a href="#features">Inventory Management</a></li>
+                <li><a href="#features">Sales &amp; Billing</a></li>
+                <li><a href="#features">Customer Management</a></li>
+                <li><a href="#features">Udhar Management</a></li>
+                <li><a href="#features">Reports &amp; Analytics</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <h4>Account</h4>
+            <ul>
+                <li><a href="./login" data-app-link="login">Login</a></li>
+                <li><a href="./register.jsp" data-app-link="register">Register</a></li>
+                <li><a href="./login" data-app-link="dashboard">Dashboard</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="container footer-bottom">
+        <p>Copyright © 2026 ShopEase. All rights reserved.</p>
+        <ul class="footer-legal">
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms &amp; Conditions</a></li>
+        </ul>
+    </div>
+</footer>
+
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<script src="js/main.js"></script>
+<script src="js/animations.js"></script>
+<!-- Lucide Icons (CDN) -->
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+<!-- ============================================================
+     ALL JAVASCRIPT (main.js + animations.js) — INLINE
+============================================================= -->
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+<script>
+    (function () {
+        'use strict';
+
+        /* ======================================================================
+           1. STICKY NAVBAR
+           ====================================================================== */
+        var nav = document.getElementById('siteNav');
+
+        function updateNavState() {
+            if (!nav) return;
+            if (window.scrollY > 12) {
+                nav.classList.add('is-stuck');
+            } else {
+                nav.classList.remove('is-stuck');
+            }
+        }
+
+        updateNavState();
+        window.addEventListener('scroll', updateNavState, { passive: true });
+
+        /* ======================================================================
+           2. MOBILE MENU
+           ====================================================================== */
+        var navToggle = document.getElementById('navToggle');
+        var mobileMenu = document.getElementById('mobileMenu');
+
+        function closeMenu() {
+            if (!nav) return;
+            nav.classList.remove('is-open');
+            if (navToggle) {
+                navToggle.setAttribute('aria-expanded', 'false');
+                navToggle.setAttribute('aria-label', 'Open navigation menu');
+            }
+        }
+
+        if (navToggle && nav) {
+            navToggle.addEventListener('click', function () {
+                var isOpen = nav.classList.toggle('is-open');
+                navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+                navToggle.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+                if (isOpen) nav.classList.add('is-stuck');
+            });
+        }
+
+        if (mobileMenu) {
+            mobileMenu.querySelectorAll('a').forEach(function (link) {
+                link.addEventListener('click', closeMenu);
+            });
+        }
+
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') closeMenu();
+        });
+
+        window.addEventListener('resize', function () {
+            if (window.innerWidth > 980) closeMenu();
+        });
+
+        /* ======================================================================
+           3. SCROLL SPY — highlight the active navigation link
+           ====================================================================== */
+        var navLinks = Array.prototype.slice.call(
+            document.querySelectorAll('.nav-links a[href^="#"]')
+        );
+
+        var sections = navLinks
+            .map(function (link) {
+                var id = link.getAttribute('href').slice(1);
+                return document.getElementById(id);
+            })
+            .filter(Boolean);
+
+        if ('IntersectionObserver' in window && sections.length) {
+            var spy = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (!entry.isIntersecting) return;
+                    var id = entry.target.id;
+                    navLinks.forEach(function (link) {
+                        link.classList.toggle('is-active', link.getAttribute('href') === '#' + id);
+                    });
+                });
+            }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+
+            sections.forEach(function (section) { spy.observe(section); });
+        }
+
+        /* ======================================================================
+           4. FAQ ACCORDION
+           ====================================================================== */
+        var faqItems = Array.prototype.slice.call(document.querySelectorAll('.faq-item'));
+
+        faqItems.forEach(function (item) {
+            var button = item.querySelector('.faq-q');
+            var panel = item.querySelector('.faq-a');
+            if (!button || !panel) return;
+
+            button.addEventListener('click', function () {
+                var isOpen = item.classList.contains('is-open');
+
+                // Close all other items (single-open accordion)
+                faqItems.forEach(function (other) {
+                    if (other === item) return;
+                    other.classList.remove('is-open');
+                    var otherBtn = other.querySelector('.faq-q');
+                    var otherPanel = other.querySelector('.faq-a');
+                    if (otherBtn) otherBtn.setAttribute('aria-expanded', 'false');
+                    if (otherPanel) otherPanel.style.maxHeight = '';
+                });
+
+                if (isOpen) {
+                    item.classList.remove('is-open');
+                    button.setAttribute('aria-expanded', 'false');
+                    panel.style.maxHeight = '';
+                } else {
+                    item.classList.add('is-open');
+                    button.setAttribute('aria-expanded', 'true');
+                    panel.style.maxHeight = panel.scrollHeight + 'px';
+                }
+            });
+        });
+
+        // Keep open panels correctly sized on resize
+        window.addEventListener('resize', function () {
+            faqItems.forEach(function (item) {
+                if (!item.classList.contains('is-open')) return;
+                var panel = item.querySelector('.faq-a');
+                if (panel) panel.style.maxHeight = panel.scrollHeight + 'px';
+            });
+        });
+
+        /* ======================================================================
+           5. PRODUCT SHOWCASE TABS
+           ====================================================================== */
+        var tabs = Array.prototype.slice.call(document.querySelectorAll('.tab[data-tab]'));
+        var panels = Array.prototype.slice.call(document.querySelectorAll('.panel'));
+
+        function activateTab(tab) {
+            var target = tab.getAttribute('data-tab');
+
+            tabs.forEach(function (t) {
+                var on = t === tab;
+                t.classList.toggle('is-active', on);
+                t.setAttribute('aria-selected', on ? 'true' : 'false');
+                t.setAttribute('tabindex', on ? '0' : '-1');
+            });
+
+            panels.forEach(function (p) {
+                var match = p.id === 'panel-' + target;
+                p.classList.toggle('is-active', match);
+                if (match) {
+                    p.removeAttribute('hidden');
+                } else {
+                    p.setAttribute('hidden', '');
+                }
+            });
+        }
+
+        tabs.forEach(function (tab) {
+            tab.addEventListener('click', function () { activateTab(tab); });
+
+            tab.addEventListener('keydown', function (e) {
+                var index = tabs.indexOf(tab);
+                var next = null;
+
+                if (e.key === 'ArrowRight') next = tabs[(index + 1) % tabs.length];
+                if (e.key === 'ArrowLeft') next = tabs[(index - 1 + tabs.length) % tabs.length];
+                if (e.key === 'Home') next = tabs[0];
+                if (e.key === 'End') next = tabs[tabs.length - 1];
+
+                if (next) {
+                    e.preventDefault();
+                    next.focus();
+                    activateTab(next);
+                }
+            });
+        });
+
+        /* ======================================================================
+           6. SMOOTH SCROLL FOR ANCHOR LINKS (with fixed-header offset)
+           ====================================================================== */
+        document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+            link.addEventListener('click', function (e) {
+                var id = link.getAttribute('href');
+                if (!id || id === '#') return;
+
+                var target = document.querySelector(id);
+                if (!target) return;
+
+                e.preventDefault();
+                var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                var top = target.getBoundingClientRect().top + window.scrollY - 84;
+
+                window.scrollTo({
+                    top: top,
+                    behavior: reduce ? 'auto' : 'smooth'
+                });
+            });
+        });
+
+        /* ======================================================================
+           7. SCROLL REVEAL + AUTO-STAGGER (animations)
+           ====================================================================== */
+        var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        // Auto-stagger: every direct child of a [data-stagger] container becomes
+        // a reveal element with an incremental delay.
+        document.querySelectorAll('[data-stagger]').forEach(function (group) {
+            Array.prototype.forEach.call(group.children, function (child, index) {
+                child.setAttribute('data-reveal', '');
+                child.style.setProperty('--d', index * 70 + 'ms');
+            });
+        });
+
+        var revealItems = document.querySelectorAll('[data-reveal]');
+
+        function showImmediately(el) {
+            el.style.opacity = '';
+            el.style.transform = '';
+            el.style.removeProperty('--d');
+            el.removeAttribute('data-reveal');
+        }
+
+        if (reduceMotion || !('IntersectionObserver' in window)) {
+            // Reduced motion / no observer → show everything at once
+            revealItems.forEach(showImmediately);
+        } else {
+            function cleanup(el) {
+                var styles = window.getComputedStyle(el);
+                var delay = (parseFloat(styles.transitionDelay) || 0) * 1000;
+
+                window.setTimeout(function () {
+                    // Remove the reveal state entirely so hover transforms/transitions
+                    // defined on the element work normally afterwards.
+                    el.removeAttribute('data-reveal');
+                    el.classList.remove('is-in');
+                    el.style.removeProperty('--d');
+                }, delay + 800);
+            }
+
+            var observer = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (!entry.isIntersecting) return;
+
+                    var el = entry.target;
+                    el.classList.add('is-in');
+                    observer.unobserve(el);
+                    cleanup(el);
+                });
+            }, {
+                threshold: 0.12,
+                rootMargin: '0px 0px -60px 0px'
+            });
+
+            revealItems.forEach(function (el) { observer.observe(el); });
+
+            // Re-evaluate if the user changes their motion preference
+            if (typeof window.matchMedia === 'function') {
+                var mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+                var handleChange = function (event) {
+                    if (!event.matches) return;
+                    document.querySelectorAll('[data-reveal]').forEach(showImmediately);
+                };
+
+                if (typeof mq.addEventListener === 'function') {
+                    mq.addEventListener('change', handleChange);
+                } else if (typeof mq.addListener === 'function') {
+                    mq.addListener(handleChange);
+                }
+            }
+        }
+
+        /* ======================================================================
+           8. INITIALIZE LUCIDE ICONS
+           ====================================================================== */
+        if (window.lucide && typeof window.lucide.createIcons === 'function') {
+            window.lucide.createIcons();
+        }
+
+    })();
+</script>
+</body>
+</html>
